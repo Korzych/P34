@@ -24,3 +24,7 @@ V 0.03
 Planowane jest ustawianie kolorów poprzez bezpośrednie podanie wartości RGB.
 
 Planowane jest dodanie panelu ustawień pozwalającego na dostosowanie parametrów pracy z portami szeregowymi np. Wybór portu
+
+Dodatkowo do zrobienia:
+
+Funkcjonalność przycisku RETURN w panelu statycznym
