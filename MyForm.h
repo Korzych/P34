@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Dynam.h"
+#include "Settings.h"
 
 namespace lambient {
 
@@ -19,7 +20,7 @@ namespace lambient {
 	public:
 		MyForm(void)
 		{
-		
+			
 			InitializeComponent();
 			//
 			//TODO: konstruktor 
@@ -56,14 +57,14 @@ namespace lambient {
 	private: System::Windows::Forms::RadioButton^  radioButton2;
 	private: System::Windows::Forms::RadioButton^  radioButton1;
 	private: System::Windows::Forms::BindingSource^  bindingSource1;
-	private: System::Windows::Forms::Button^  settings1;
+
 	private: System::ComponentModel::IContainer^  components;
 
 
-	protected:
-
-	private:
+	public:
 		/// <summary>
+	//	Settings^ set1 = gcnew Settings();
+		Dynam^ d2 = gcnew Dynam();
 		/// Required designer variable.
 		/// </summary>
 
@@ -85,7 +86,6 @@ namespace lambient {
 			this->version = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->bindingSource1 = (gcnew System::Windows::Forms::BindingSource(this->components));
-			this->settings1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bindingSource1))->BeginInit();
 			this->SuspendLayout();
@@ -162,9 +162,9 @@ namespace lambient {
 			this->version->ForeColor = System::Drawing::Color::Cornsilk;
 			this->version->Location = System::Drawing::Point(12, 5);
 			this->version->Name = L"version";
-			this->version->Size = System::Drawing::Size(76, 17);
+			this->version->Size = System::Drawing::Size(49, 17);
 			this->version->TabIndex = 8;
-			this->version->Text = L"Alpha 0.02";
+			this->version->Text = L"V 0.13";
 			this->version->Click += gcnew System::EventHandler(this, &MyForm::version_Click);
 			// 
 			// button2
@@ -179,25 +179,13 @@ namespace lambient {
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
-			// settings1
-			// 
-			this->settings1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->settings1->Location = System::Drawing::Point(648, 9);
-			this->settings1->Name = L"settings1";
-			this->settings1->Size = System::Drawing::Size(103, 29);
-			this->settings1->TabIndex = 10;
-			this->settings1->Text = L"SETTINGS";
-			this->settings1->UseVisualStyleBackColor = true;
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Maroon;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(836, 514);
-			this->Controls->Add(this->settings1);
+			this->ClientSize = System::Drawing::Size(837, 508);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->version);
 			this->Controls->Add(this->button1);
@@ -231,7 +219,7 @@ private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs
 	this->Hide();
 	if (this->radioButton1->Checked == 1)
 	{
-		Dynam^ d2 = gcnew Dynam();
+		
 		d2->ShowDialog();
 	}
 	else
@@ -254,8 +242,9 @@ private: System::Void radioButton1_CheckedChanged(System::Object^  sender, Syste
 }
 //Tryb dynamiczny
 private: System::Void radioButton2_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
-
+	
 }
+
 
 };
 }

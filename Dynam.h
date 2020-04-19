@@ -1,4 +1,9 @@
 #pragma once
+#include <stdlib.h>
+#include "Settings.h"
+#include <algorithm>
+#include <fstream>
+#include <string>
 //#include "MyForm.h"
 namespace lambient {
 
@@ -12,8 +17,18 @@ namespace lambient {
 	/// <summary>
 	/// Summary for Dynam
 	/// </summary>
-	public ref class Dynam : public System::Windows::Forms::Form
+	public ref class Dynam :  public System::Windows::Forms::Form//, public Settings
 	{
+	public: 
+
+	String ^portname="";
+	private: System::Windows::Forms::Button^  button1;
+	public:
+
+	public:
+
+		Settings^ set2 = gcnew Settings();
+			// int BaudR = 0;
 	public:
 		Dynam(void)
 		{
@@ -22,7 +37,6 @@ namespace lambient {
 			//TODO: Add the constructor code here
 			//
 		}
-
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -35,7 +49,8 @@ namespace lambient {
 			}
 		}
 	private: System::Windows::Forms::GroupBox^  blit;
-	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::GroupBox^  gbox;
+
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  blendit;
 
@@ -45,14 +60,8 @@ namespace lambient {
 	private: System::Windows::Forms::Label^  label1;
 
 
-
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::Button^  button4;
-
-
-
-
-	private: System::Windows::Forms::TextBox^  rbox;
 
 	private: System::Windows::Forms::CheckBox^  cbred;
 	private: System::Windows::Forms::CheckBox^  cbyellow;
@@ -69,9 +78,23 @@ namespace lambient {
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::Label^  version;
 	private: System::Windows::Forms::PictureBox^  clr;
-	private: System::Windows::Forms::TextBox^  textBox2;
-	private: System::Windows::Forms::TextBox^  textBox1;
-	private: System::Windows::Forms::PictureBox^  pictureBox1;
+	private: System::Windows::Forms::PictureBox^  rgbbox;
+	private: System::Windows::Forms::NumericUpDown^  numberboxr;
+	private: System::Windows::Forms::NumericUpDown^  numberboxb;
+	
+
+
+
+
+
+	private: System::Windows::Forms::NumericUpDown^  numberboxg;
+	private: System::Windows::Forms::RadioButton^  radioButton1;
+	private: System::Windows::Forms::RadioButton^  radioButton2;
+
+
+
+
+
 
 
 
@@ -82,6 +105,9 @@ namespace lambient {
 
 	private:
 		/// <summary>
+		int statred;
+		int statgreen;
+		int statblue;
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
@@ -109,23 +135,29 @@ namespace lambient {
 			this->cbgreen = (gcnew System::Windows::Forms::CheckBox());
 			this->cbwhite = (gcnew System::Windows::Forms::CheckBox());
 			this->blendit = (gcnew System::Windows::Forms::Button());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->gbox = (gcnew System::Windows::Forms::GroupBox());
+			this->numberboxb = (gcnew System::Windows::Forms::NumericUpDown());
+			this->numberboxg = (gcnew System::Windows::Forms::NumericUpDown());
+			this->numberboxr = (gcnew System::Windows::Forms::NumericUpDown());
+			this->rgbbox = (gcnew System::Windows::Forms::PictureBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->rbox = (gcnew System::Windows::Forms::TextBox());
 			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->version = (gcnew System::Windows::Forms::Label());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->blit->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->clr))->BeginInit();
-			this->groupBox1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->gbox->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxb))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxg))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxr))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rgbbox))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// blit
@@ -147,9 +179,9 @@ namespace lambient {
 			this->blit->Controls->Add(this->blendit);
 			this->blit->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->blit->Location = System::Drawing::Point(64, 59);
+			this->blit->Location = System::Drawing::Point(52, 64);
 			this->blit->Name = L"blit";
-			this->blit->Size = System::Drawing::Size(293, 381);
+			this->blit->Size = System::Drawing::Size(301, 401);
 			this->blit->TabIndex = 0;
 			this->blit->TabStop = false;
 			this->blit->Text = L"Blend IT!";
@@ -157,8 +189,8 @@ namespace lambient {
 			// 
 			// clr
 			// 
-			this->clr->BackColor = System::Drawing::SystemColors::AppWorkspace;
-			this->clr->Location = System::Drawing::Point(34, 268);
+			this->clr->BackColor = System::Drawing::Color::Transparent;
+			this->clr->Location = System::Drawing::Point(34, 297);
 			this->clr->Name = L"clr";
 			this->clr->Size = System::Drawing::Size(81, 80);
 			this->clr->TabIndex = 13;
@@ -167,7 +199,7 @@ namespace lambient {
 			// cbdn
 			// 
 			this->cbdn->AutoSize = true;
-			this->cbdn->Location = System::Drawing::Point(142, 289);
+			this->cbdn->Location = System::Drawing::Point(142, 209);
 			this->cbdn->Name = L"cbdn";
 			this->cbdn->Size = System::Drawing::Size(140, 29);
 			this->cbdn->TabIndex = 12;
@@ -187,7 +219,7 @@ namespace lambient {
 			// cbars
 			// 
 			this->cbars->AutoSize = true;
-			this->cbars->Location = System::Drawing::Point(142, 209);
+			this->cbars->Location = System::Drawing::Point(142, 289);
 			this->cbars->Name = L"cbars";
 			this->cbars->Size = System::Drawing::Size(95, 29);
 			this->cbars->TabIndex = 10;
@@ -286,49 +318,85 @@ namespace lambient {
 			// 
 			// blendit
 			// 
-			this->blendit->Location = System::Drawing::Point(148, 324);
+			this->blendit->Location = System::Drawing::Point(139, 324);
 			this->blendit->Name = L"blendit";
-			this->blendit->Size = System::Drawing::Size(90, 43);
+			this->blendit->Size = System::Drawing::Size(98, 43);
 			this->blendit->TabIndex = 0;
 			this->blendit->Text = L"Blend IT!";
 			this->blendit->UseVisualStyleBackColor = true;
 			this->blendit->Click += gcnew System::EventHandler(this, &Dynam::blendit_Click);
 			// 
-			// groupBox1
+			// gbox
 			// 
-			this->groupBox1->BackColor = System::Drawing::Color::Transparent;
-			this->groupBox1->Controls->Add(this->textBox2);
-			this->groupBox1->Controls->Add(this->textBox1);
-			this->groupBox1->Controls->Add(this->pictureBox1);
-			this->groupBox1->Controls->Add(this->button5);
-			this->groupBox1->Controls->Add(this->label3);
-			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Controls->Add(this->rbox);
-			this->groupBox1->Controls->Add(this->button3);
-			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->gbox->BackColor = System::Drawing::Color::Transparent;
+			this->gbox->Controls->Add(this->numberboxb);
+			this->gbox->Controls->Add(this->numberboxg);
+			this->gbox->Controls->Add(this->numberboxr);
+			this->gbox->Controls->Add(this->rgbbox);
+			this->gbox->Controls->Add(this->label3);
+			this->gbox->Controls->Add(this->label2);
+			this->gbox->Controls->Add(this->label1);
+			this->gbox->Controls->Add(this->button3);
+			this->gbox->Enabled = false;
+			this->gbox->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->groupBox1->Location = System::Drawing::Point(526, 59);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(250, 381);
-			this->groupBox1->TabIndex = 1;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"RGB ";
+			this->gbox->Location = System::Drawing::Point(495, 64);
+			this->gbox->Name = L"gbox";
+			this->gbox->Size = System::Drawing::Size(319, 401);
+			this->gbox->TabIndex = 1;
+			this->gbox->TabStop = false;
+			this->gbox->Text = L"RGB ";
+			this->gbox->Enter += gcnew System::EventHandler(this, &Dynam::gbox_Enter);
 			// 
-			// button5
+			// numberboxb
 			// 
-			this->button5->Location = System::Drawing::Point(139, 302);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(90, 34);
-			this->button5->TabIndex = 9;
-			this->button5->Text = L"Apply";
-			this->button5->UseVisualStyleBackColor = true;
+			this->numberboxb->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->numberboxb->Location = System::Drawing::Point(77, 189);
+			this->numberboxb->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 255, 0, 0, 0 });
+			this->numberboxb->Name = L"numberboxb";
+			this->numberboxb->Size = System::Drawing::Size(120, 30);
+			this->numberboxb->TabIndex = 16;
+			this->numberboxb->ValueChanged += gcnew System::EventHandler(this, &Dynam::numberboxb_ValueChanged);
+			// 
+			// numberboxg
+			// 
+			this->numberboxg->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->numberboxg->Location = System::Drawing::Point(77, 119);
+			this->numberboxg->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 255, 0, 0, 0 });
+			this->numberboxg->Name = L"numberboxg";
+			this->numberboxg->Size = System::Drawing::Size(120, 30);
+			this->numberboxg->TabIndex = 15;
+			this->numberboxg->ValueChanged += gcnew System::EventHandler(this, &Dynam::numberboxg_ValueChanged);
+			// 
+			// numberboxr
+			// 
+			this->numberboxr->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->numberboxr->Location = System::Drawing::Point(77, 50);
+			this->numberboxr->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 255, 0, 0, 0 });
+			this->numberboxr->Name = L"numberboxr";
+			this->numberboxr->Size = System::Drawing::Size(120, 30);
+			this->numberboxr->TabIndex = 13;
+			this->numberboxr->ValueChanged += gcnew System::EventHandler(this, &Dynam::numberboxr_ValueChanged);
+			// 
+			// rgbbox
+			// 
+			this->rgbbox->BackColor = System::Drawing::Color::Black;
+			this->rgbbox->Location = System::Drawing::Point(77, 255);
+			this->rgbbox->Name = L"rgbbox";
+			this->rgbbox->Size = System::Drawing::Size(81, 80);
+			this->rgbbox->TabIndex = 14;
+			this->rgbbox->TabStop = false;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Impact", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
+			this->label3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->label3->Location = System::Drawing::Point(45, 190);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(26, 29);
@@ -340,6 +408,7 @@ namespace lambient {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Impact", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
+			this->label2->ForeColor = System::Drawing::Color::Lime;
 			this->label2->Location = System::Drawing::Point(45, 120);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(26, 29);
@@ -351,42 +420,44 @@ namespace lambient {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Impact", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
+			this->label1->ForeColor = System::Drawing::Color::Red;
 			this->label1->Location = System::Drawing::Point(45, 50);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(26, 29);
 			this->label1->TabIndex = 6;
 			this->label1->Text = L"R";
 			// 
-			// rbox
-			// 
-			this->rbox->BackColor = System::Drawing::SystemColors::Window;
-			this->rbox->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->rbox->Location = System::Drawing::Point(77, 50);
-			this->rbox->Name = L"rbox";
-			this->rbox->Size = System::Drawing::Size(100, 30);
-			this->rbox->TabIndex = 3;
-			this->rbox->Text = L"0-255";
-			this->rbox->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(139, 243);
+			this->button3->Location = System::Drawing::Point(199, 297);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(90, 38);
+			this->button3->Size = System::Drawing::Size(105, 38);
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"Random";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &Dynam::button3_Click);
+			// 
+			// button5
+			// 
+			this->button5->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button5->Location = System::Drawing::Point(735, 471);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(90, 34);
+			this->button5->TabIndex = 9;
+			this->button5->Text = L"Apply";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &Dynam::button5_Click);
 			// 
 			// button2
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button2->Location = System::Drawing::Point(761, 9);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(64, 29);
 			this->button2->TabIndex = 10;
-			this->button2->Text = L"EXIT ";
+			this->button2->Text = L"Exit";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &Dynam::button2_Click);
 			// 
@@ -398,7 +469,7 @@ namespace lambient {
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(93, 29);
 			this->button4->TabIndex = 11;
-			this->button4->Text = L"RETURN";
+			this->button4->Text = L"Return";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &Dynam::button4_Click);
 			// 
@@ -409,42 +480,45 @@ namespace lambient {
 			this->version->ForeColor = System::Drawing::Color::Cornsilk;
 			this->version->Location = System::Drawing::Point(12, 9);
 			this->version->Name = L"version";
-			this->version->Size = System::Drawing::Size(76, 17);
+			this->version->Size = System::Drawing::Size(49, 17);
 			this->version->TabIndex = 12;
-			this->version->Text = L"Alpha 0.02";
+			this->version->Text = L"V 0.13";
 			// 
-			// pictureBox1
+			// radioButton1
 			// 
-			this->pictureBox1->BackColor = System::Drawing::SystemColors::AppWorkspace;
-			this->pictureBox1->Location = System::Drawing::Point(27, 256);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(81, 80);
-			this->pictureBox1->TabIndex = 14;
-			this->pictureBox1->TabStop = false;
+			this->radioButton1->AutoSize = true;
+			this->radioButton1->BackColor = System::Drawing::Color::Transparent;
+			this->radioButton1->Checked = true;
+			this->radioButton1->Location = System::Drawing::Point(29, 64);
+			this->radioButton1->Name = L"radioButton1";
+			this->radioButton1->Size = System::Drawing::Size(17, 16);
+			this->radioButton1->TabIndex = 13;
+			this->radioButton1->TabStop = true;
+			this->radioButton1->UseVisualStyleBackColor = false;
+			this->radioButton1->CheckedChanged += gcnew System::EventHandler(this, &Dynam::radioButton1_CheckedChanged);
 			// 
-			// textBox1
+			// radioButton2
 			// 
-			this->textBox1->BackColor = System::Drawing::SystemColors::Window;
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(77, 189);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 30);
-			this->textBox1->TabIndex = 15;
-			this->textBox1->Text = L"0-255";
-			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->radioButton2->AutoSize = true;
+			this->radioButton2->BackColor = System::Drawing::Color::Transparent;
+			this->radioButton2->Location = System::Drawing::Point(472, 64);
+			this->radioButton2->Name = L"radioButton2";
+			this->radioButton2->Size = System::Drawing::Size(17, 16);
+			this->radioButton2->TabIndex = 14;
+			this->radioButton2->UseVisualStyleBackColor = false;
+			this->radioButton2->CheckedChanged += gcnew System::EventHandler(this, &Dynam::radioButton2_CheckedChanged);
 			// 
-			// textBox2
+			// button1
 			// 
-			this->textBox2->BackColor = System::Drawing::SystemColors::Window;
-			this->textBox2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->textBox2->Location = System::Drawing::Point(77, 121);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(100, 30);
-			this->textBox2->TabIndex = 16;
-			this->textBox2->Text = L"0-255";
-			this->textBox2->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button1->Location = System::Drawing::Point(659, 9);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(92, 29);
+			this->button1->TabIndex = 15;
+			this->button1->Text = L"Settings";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Dynam::button1_Click);
 			// 
 			// Dynam
 			// 
@@ -452,31 +526,42 @@ namespace lambient {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(837, 508);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->radioButton2);
+			this->Controls->Add(this->radioButton1);
 			this->Controls->Add(this->version);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button2);
-			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->gbox);
+			this->Controls->Add(this->button5);
 			this->Controls->Add(this->blit);
 			this->Name = L"Dynam";
 			this->Text = L"Static Mode";
+			this->Load += gcnew System::EventHandler(this, &Dynam::Dynam_Load);
 			this->blit->ResumeLayout(false);
 			this->blit->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->clr))->EndInit();
-			this->groupBox1->ResumeLayout(false);
-			this->groupBox1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			this->gbox->ResumeLayout(false);
+			this->gbox->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxb))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxg))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxr))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rgbbox))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+	//private: void findPorts(void) {
+	//array<Object^>^ objectArray = System::IO::Ports::SerialPort::GetPortNames();
+	//this->pselect->Items->AddRange(objectArray);};
+
 	private: System::Void groupBox1_Enter(System::Object^  sender, System::EventArgs^  e) {
 		
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-	//this->Hide();
-	//MyForm^ mf2 = gcnew MyForm();
-	//mf2->ShowDialog();
+	this->Hide();
+	
 	}
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 	Application::Exit();
@@ -575,13 +660,119 @@ private: System::Void blendit_Click(System::Object^  sender, System::EventArgs^ 
 		
 	}
 	if (sum != 0)
-	{
+	{ 
 		sumr = sumr / sum;
 		sumg = sumg / sum;
 		sumb = sumb / sum;
+		this->statblue = sumb;
+		this->statred = sumr;
+		this->statgreen = sumg;
 		this->clr->BackColor = Color::FromArgb(sumr, sumg, sumb);
 	}
 	
 }
+
+//Wysy³anie danych przez UART
+private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+	String^ name = this->set2->serialPort1->PortName;
+	if (this->set2->serialPort1->IsOpen)
+	{	
+	//	std::string s =
+		std::string temp1 = std::to_string(statblue);
+		String^ bstring = gcnew String(temp1.c_str());
+		std::string temp2 = std::to_string(statred);
+		String^ rstring = gcnew String(temp2.c_str());
+		std::string temp3 = std::to_string(statgreen);
+		String^ gstring = gcnew String(temp3.c_str());
+		this->set2->usend(bstring, rstring, gstring);
+	//const 	int tsize = temp.size() + 1
+	//	unsigned char a[255];
+		//strcpy(a, temp.c_str());
+		//cli::array<unsigned char> ^ar1 = a;
+		//(gcnew String(c))->ToCharArray();
+		//this->set2->usend(c, c, c);
+		
+	}
+
+}
+private: System::Void numberboxr_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+	int r1 = (int)numberboxr->Value;
+	int g1 = (int)numberboxg->Value;
+	int b1 = (int)numberboxb->Value;
+	this->rgbbox->BackColor = Color::FromArgb(r1, g1, b1);
+}
+private: System::Void numberboxg_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+	int r1 = (int)numberboxr->Value;
+	int g1 = (int)numberboxg->Value;
+	int b1 = (int)numberboxb->Value;
+	this->rgbbox->BackColor = Color::FromArgb(r1, g1, b1);
+}
+private: System::Void numberboxb_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+	int r1 = (int)numberboxr->Value;
+	int g1 = (int)numberboxg->Value;
+	int b1 = (int)numberboxb->Value;
+	this->rgbbox->BackColor = Color::FromArgb(r1, g1, b1);
+}
+private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	int r1=(rand()%255);
+	int g1 = (rand() % 255);
+	int b1 = (rand() % 255);
+
+	numberboxr->Value = r1;
+	numberboxg->Value = g1;
+	numberboxb->Value = b1;
+
+	this->statblue = b1;
+	this->statred = r1;
+	this->statgreen = g1;
+
+	this->rgbbox->BackColor = Color::FromArgb(r1, g1, b1);
+}
+private: System::Void radioButton1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (this->radioButton1->Checked == 1)
+	{
+		this->blit->Enabled = 1;
+		this->gbox->Enabled = 0;
+		//this->groupBox2_Enter.Enabled = 0;
+	}
+	else
+	{
+		this->blit->Enabled = 0;
+		this->gbox->Enabled = 1;
+	}
+}
+private: System::Void radioButton2_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (this->radioButton2->Checked == 1)
+	{
+		this->blit->Enabled = 0;
+		this->gbox->Enabled = 1;
+	}
+	else
+	{
+		this->blit->Enabled = 1;
+		this->gbox->Enabled = 0;
+	}
+	
+}
+	
+private: System::Void gbox_Enter(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void Dynam_Load(System::Object^  sender, System::EventArgs^  e) {
+
+}
+private: System::Void groupBox1_Enter_1(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void pselect_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void baudrates_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	set2->ShowDialog();
+
+}
+
 };
 }
