@@ -19,11 +19,18 @@ Dodano funkcjonalności przycisków z panelu startowego.
 Dodano możliwość wyboru kolorów z listy dostępnych oraz możliwość mieszania ich wartości w inne kolory.
 
 
-V 0.03 
+V 0.03 Wykonano do 18.04.2020
 
 Planowane jest ustawianie kolorów poprzez bezpośrednie podanie wartości RGB.
 
 Planowane jest dodanie panelu ustawień pozwalającego na dostosowanie parametrów pracy z portami szeregowymi np. Wybór portu
+
+V 0.13 19.04.2020
+ 
+ Wysyłanie wartości RGB do portów.
+  
+ Przeniesienie panelu ustawień do poszczególnych trybów (wystąpił problem z przekazywaniem danych pomiędzy oknami podrzędnymi 
+
 
 Dodatkowo do zrobienia:
 
