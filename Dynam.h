@@ -466,6 +466,7 @@ namespace lambient {
 			this->button4->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button4->Location = System::Drawing::Point(3, 476);
+			this->button4->Margin = System::Windows::Forms::Padding(20);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(93, 29);
 			this->button4->TabIndex = 11;

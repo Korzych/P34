@@ -134,11 +134,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dynam.cpp" />
+    <ClCompile Include="Dynamic.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Settings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dynam.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Dynamic.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MyForm.h">
@@ -151,6 +155,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Dynam.resx">
       <DependentUpon>Dynam.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dynamic.resx">
+      <DependentUpon>Dynamic.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
