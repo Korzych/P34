@@ -21,9 +21,9 @@ Dodano możliwość wyboru kolorów z listy dostępnych oraz możliwość miesza
 
 V 0.03 Wykonano do 18.04.2020
 
-Planowane jest ustawianie kolorów poprzez bezpośrednie podanie wartości RGB.
+Ustawianie kolorów poprzez bezpośrednie podanie wartości RGB.
 
-Planowane jest dodanie panelu ustawień pozwalającego na dostosowanie parametrów pracy z portami szeregowymi np. Wybór portu
+Dodanie panelu ustawień pozwalającego na dostosowanie parametrów pracy z portami szeregowymi np. Wybór portu
 
 V 0.13 19.04.2020
  
