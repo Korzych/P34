@@ -32,6 +32,3 @@ V 0.13 19.04.2020
  Przeniesienie panelu ustawień do poszczególnych trybów (wystąpił problem z przekazywaniem danych pomiędzy oknami podrzędnymi 
 
 
-Dodatkowo do zrobienia:
-
-Funkcjonalność przycisku RETURN w panelu statycznym
