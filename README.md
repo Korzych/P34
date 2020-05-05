@@ -31,4 +31,7 @@ V 0.13 19.04.2020
   
  Przeniesienie panelu ustawień do poszczególnych trybów (wystąpił problem z przekazywaniem danych pomiędzy oknami podrzędnymi 
 
+V 0.23 05.05.2020
+ 
+ Wykrywanie aktualnie wyświetlanej wartości RGB dla wybranych stef pikseli.
 
