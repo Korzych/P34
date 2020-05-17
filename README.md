@@ -34,4 +34,8 @@ V 0.13 19.04.2020
 V 0.23 05.05.2020
  
  Wykrywanie aktualnie wyświetlanej wartości RGB dla wybranych stef pikseli.
+ 
+Wersja 17.05.2020
+
+Udało się podzielić zadania aplikacji na wiele wątków co zwiększa jej wydajność lecz zmniejsza wydajność samego systemu Windows.
 
