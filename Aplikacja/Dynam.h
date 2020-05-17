@@ -80,23 +80,10 @@ namespace lambient {
 	private: System::Windows::Forms::PictureBox^  rgbbox;
 	private: System::Windows::Forms::NumericUpDown^  numberboxr;
 	private: System::Windows::Forms::NumericUpDown^  numberboxb;
-	
-
-
-
-
 
 	private: System::Windows::Forms::NumericUpDown^  numberboxg;
 	private: System::Windows::Forms::RadioButton^  radioButton1;
 	private: System::Windows::Forms::RadioButton^  radioButton2;
-
-
-
-
-
-
-
-
 
 	protected:
 
@@ -674,17 +661,18 @@ private: System::Void blendit_Click(System::Object^  sender, System::EventArgs^ 
 
 //Wysy³anie danych przez UART
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-	String^ name = this->set2->serialPort1->PortName;
+	//String^ name = this->set2->serialPort1->PortName;
 	if (this->set2->serialPort1->IsOpen)
 	{	
 	//	std::string s =
+		MessageBox::Show("SENDING");
 		std::string temp1 = std::to_string(statblue);
 		String^ bstring = gcnew String(temp1.c_str());
 		std::string temp2 = std::to_string(statred);
 		String^ rstring = gcnew String(temp2.c_str());
 		std::string temp3 = std::to_string(statgreen);
 		String^ gstring = gcnew String(temp3.c_str());
-		this->set2->usend(bstring, rstring, gstring);
+		this->set2->usend(rstring, gstring, bstring);
 	//const 	int tsize = temp.size() + 1
 	//	unsigned char a[255];
 		//strcpy(a, temp.c_str());
@@ -692,6 +680,10 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 		//(gcnew String(c))->ToCharArray();
 		//this->set2->usend(c, c, c);
 		
+	}
+	else
+	{
+		MessageBox::Show("Please configure port and try again");
 	}
 
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Settings.h"
 #include <string>
+#include <Windows.h>
 namespace lambient {
 
 	using namespace System;
@@ -9,10 +10,29 @@ namespace lambient {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	///////////////////////TEST
+	using namespace System::Threading;
 	struct Kolor
 	{
-		long int r, g, b = 0;
+		 int r, g, b = 0;
+		 Kolor()
+		 {
+			 this->r = 0;
+			 this->g = 0;
+			 this->b = 0;
+		 }
+	};
+	
+	///////////////////////TEST
+	struct threadCol {
+		int x, y;
+		COLORREF col;
+		threadCol(int x, int y, COLORREF col)
+		{
+
+			this->x = x;
+			this->y = y;
+			//this->col = col;
+		}
 	};
 	////////////////////////TEST
 	/// <summary>
@@ -22,7 +42,7 @@ namespace lambient {
 	{
 	public:
 		Dynamic(void);
-		
+	
 
 
 	protected:
@@ -55,10 +75,13 @@ namespace lambient {
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::PictureBox^  leftBox;
+	private: System::Windows::Forms::PictureBox^  rightBox;
 
-	private: System::Windows::Forms::PictureBox^  pictureBox1;
-	private: System::Windows::Forms::PictureBox^  pictureBox2;
-	private: System::Windows::Forms::PictureBox^  pictureBox3;
+
+
+	private: System::Windows::Forms::PictureBox^  topBox;
+
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::RadioButton^  rB2;
 	private: System::Windows::Forms::RadioButton^  rB1;
@@ -95,9 +118,9 @@ namespace lambient {
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
+			this->leftBox = (gcnew System::Windows::Forms::PictureBox());
+			this->rightBox = (gcnew System::Windows::Forms::PictureBox());
+			this->topBox = (gcnew System::Windows::Forms::PictureBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->rB2 = (gcnew System::Windows::Forms::RadioButton());
 			this->rB1 = (gcnew System::Windows::Forms::RadioButton());
@@ -107,9 +130,9 @@ namespace lambient {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->edgerange))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->uprange))->BeginInit();
 			this->groupBox1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->leftBox))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rightBox))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->topBox))->BeginInit();
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->modebox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->modeBox2))->BeginInit();
@@ -231,32 +254,32 @@ namespace lambient {
 			this->label2->Text = L"Left/Right";
 			this->label2->Click += gcnew System::EventHandler(this, &Dynamic::label2_Click);
 			// 
-			// pictureBox1
+			// leftBox
 			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox1->Location = System::Drawing::Point(5, 48);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(68, 403);
-			this->pictureBox1->TabIndex = 25;
-			this->pictureBox1->TabStop = false;
+			this->leftBox->BackColor = System::Drawing::Color::Transparent;
+			this->leftBox->Location = System::Drawing::Point(5, 48);
+			this->leftBox->Name = L"leftBox";
+			this->leftBox->Size = System::Drawing::Size(68, 403);
+			this->leftBox->TabIndex = 25;
+			this->leftBox->TabStop = false;
 			// 
-			// pictureBox2
+			// rightBox
 			// 
-			this->pictureBox2->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox2->Location = System::Drawing::Point(764, 48);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(68, 403);
-			this->pictureBox2->TabIndex = 26;
-			this->pictureBox2->TabStop = false;
+			this->rightBox->BackColor = System::Drawing::Color::Transparent;
+			this->rightBox->Location = System::Drawing::Point(764, 48);
+			this->rightBox->Name = L"rightBox";
+			this->rightBox->Size = System::Drawing::Size(68, 403);
+			this->rightBox->TabIndex = 26;
+			this->rightBox->TabStop = false;
 			// 
-			// pictureBox3
+			// topBox
 			// 
-			this->pictureBox3->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox3->Location = System::Drawing::Point(176, 9);
-			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(480, 67);
-			this->pictureBox3->TabIndex = 27;
-			this->pictureBox3->TabStop = false;
+			this->topBox->BackColor = System::Drawing::Color::Transparent;
+			this->topBox->Location = System::Drawing::Point(176, 9);
+			this->topBox->Name = L"topBox";
+			this->topBox->Size = System::Drawing::Size(480, 67);
+			this->topBox->TabIndex = 27;
+			this->topBox->TabStop = false;
 			// 
 			// groupBox2
 			// 
@@ -341,9 +364,9 @@ namespace lambient {
 			this->Controls->Add(this->modeBox2);
 			this->Controls->Add(this->modebox);
 			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->pictureBox3);
-			this->Controls->Add(this->pictureBox2);
-			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->topBox);
+			this->Controls->Add(this->rightBox);
+			this->Controls->Add(this->leftBox);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->startbutton);
@@ -356,9 +379,9 @@ namespace lambient {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->uprange))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->leftBox))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rightBox))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->topBox))->EndInit();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->modebox))->EndInit();
@@ -407,4 +430,75 @@ private: System::Void stopbutton_Click(System::Object^  sender, System::EventArg
 }
 
 };
+public ref class MyThread
+{
+public:
+	Kolor* clr ;//nullptr
+	int x, y, r, g, b;
+public: MyThread(int x, int y, Kolor* clr)
+{
+	this->clr = clr;
+	this->x = x;
+	this->y = y;
+	this->r = 0;
+	this->g = 0;
+	this->b = 0;
+}
+public:
+	void ThreadProc()
+	{
+		COLORREF col1;
+
+		HWND hwnd;
+		HDC hdc;
+		hdc = GetDC(hwnd);
+		FindWindowA(NULL, "tr");
+		SetForegroundWindow(hwnd);
+		int s;
+		while(true)
+		{ 
+	
+
+		s = 0;
+		b = 0;
+		r = 0;
+		g = 0;
+		if (x < 0)
+		{
+			for (int i = 1920+x; i < 1920; i += 10)
+			{
+				col1 = GetPixel(hdc, i, y);
+				r = r + GetRValue(col1);
+				g = g + GetGValue(col1);
+				b = b + GetBValue(col1);
+				s++;
+			}
+
+		}
+		else
+		{
+			for (int i = 0; i < x; i += 10)
+			{
+				col1 = GetPixel(hdc, i, y);
+				r = r + GetRValue(col1);
+				g = g + GetGValue(col1);
+				b = b + GetBValue(col1);
+				s++;
+			}
+		}
+		
+		b = b / s;
+		r = r / s;
+		g = g / s;
+				
+		clr->b = b;
+		clr->g = g;
+		clr->r = r;
+		
+	//MessageBox::Show("IMA THREAD");
+		Thread::Sleep(500);
+		}
+	}
+};
+
 }
