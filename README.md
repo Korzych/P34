@@ -41,4 +41,4 @@ Udało się podzielić zadania aplikacji na wiele wątków co zwiększa jej wyda
 
 Wersja 20.05.2020
 
-Dodano pliki płytki STM32. Działa odbieranie ramek UART, przekazywanie ich do bufora (na razie jednego ringu).
+Dodano pliki płytki STM32. Działa odbieranie ramek UART, przekazywanie kolorów do bufora (na razie jednego ringu).
