@@ -39,3 +39,6 @@ Wersja 17.05.2020
 
 Udało się podzielić zadania aplikacji na wiele wątków co zwiększa jej wydajność lecz zmniejsza wydajność samego systemu Windows.
 
+Wersja 20.05.2020
+
+Dodano pliki płytki STM32. Działa odbieranie ramek UART, przekazywanie ich do bufora (na razie jednego ringu).
