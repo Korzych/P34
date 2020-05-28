@@ -1,0 +1,10 @@
+﻿  Dynamic.cpp
+  MyForm.cpp
+  Generating Code...
+c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(562): warning C4700: uninitialized local variable 'sumr' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(563): warning C4700: uninitialized local variable 'sumg' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(564): warning C4700: uninitialized local variable 'sumb' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(457): warning C4700: uninitialized local variable 'hwnd' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(457): warning C4700: uninitialized local variable 'hwnd' used
+  Dynam.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  lambient.vcxproj -> C:\Users\Krzysiek\source\repos\lambient\Debug\lambient.exe
