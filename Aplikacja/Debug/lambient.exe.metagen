@@ -24,7 +24,6 @@ Class lambient.Settings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.IO.Ports.SerialPort serialPort1 : Public
   Methods:
     usend(Int32, Int32, Int32): PrivateScope, Public, HideBySig
-    usend(String, String, String): PrivateScope, Public, HideBySig
 Class lambient.Dynam: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
