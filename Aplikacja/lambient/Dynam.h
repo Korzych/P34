@@ -673,6 +673,8 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 		std::string temp3 = std::to_string(statgreen);
 		String^ gstring = gcnew String(temp3.c_str());
 		this->set2->usend(rstring, gstring, bstring);
+		this->set2->usend(rstring, gstring, bstring);
+		this->set2->usend(rstring, gstring, bstring);
 	//const 	int tsize = temp.size() + 1
 	//	unsigned char a[255];
 		//strcpy(a, temp.c_str());
