@@ -78,12 +78,14 @@ namespace lambient {
 	}*/
 	public: void usend(int r, int g, int b)
 	{
-		cli::array<Byte>^ a1 = gcnew cli::array<Byte>(r);
-		cli::array<Byte>^ a2= gcnew cli::array<Byte>(g);
-		cli::array<Byte>^ a3 = gcnew cli::array<Byte>(b);
+		uint8_t x = (uint8_t)r;
+		uint8_t y = (uint8_t)g;
+		uint8_t z = (uint8_t)b;
+		auto a1 = gcnew cli::array<System::Byte>{x,y,z};
+		
 		this->serialPort1->Write(a1, 0, a1->Length);
-		this->serialPort1->Write(a2, 0, a2->Length);
-		this->serialPort1->Write(a3, 0, a3->Length);
+	//	this->serialPort1->Write(a2, 0, a2->Length);
+	//this->serialPort1->Write(a3, 0, a3->Length);
 		/*
 		byte a1 = (byte)a;
 		byte a2 = (byte)b;
