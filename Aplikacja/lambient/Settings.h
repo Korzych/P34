@@ -69,11 +69,34 @@ namespace lambient {
 	private: System::Windows::Forms::Button^  button3;
 	public:
 	private: System::ComponentModel::IContainer^  components;
+			 /*
 	public: void usend(System::String^ br, System::String^ bg,System::String^ bb)
 	{
 		this->serialPort1->Write(br);
 		this->serialPort1->Write(bg);
 		this->serialPort1->Write(bb);
+	}*/
+	public: void usend(int r, int g, int b)
+	{
+		cli::array<Byte>^ a1 = gcnew cli::array<Byte>(r);
+		cli::array<Byte>^ a2= gcnew cli::array<Byte>(g);
+		cli::array<Byte>^ a3 = gcnew cli::array<Byte>(b);
+		this->serialPort1->Write(a1, 0, a1->Length);
+		this->serialPort1->Write(a2, 0, a2->Length);
+		this->serialPort1->Write(a3, 0, a3->Length);
+		/*
+		byte a1 = (byte)a;
+		byte a2 = (byte)b;
+		byte a3 = (byte)c;
+		cli::array<byte>
+		this->serialPort1->Write(a1, 0, 1);
+		//void Write(cli::array <System::Byte> ^ buffer, int offset, int count);
+
+		
+		this->serialPort1->Write(br);
+		this->serialPort1->Write(bg);
+		this->serialPort1->Write(bb);
+		*/
 	}
 	protected:
 

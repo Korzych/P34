@@ -664,7 +664,7 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 	//String^ name = this->set2->serialPort1->PortName;
 	if (this->set2->serialPort1->IsOpen)
 	{	
-	//	std::string s =
+		/*
 		MessageBox::Show("SENDING");
 		std::string temp1 = std::to_string(statblue);
 		String^ bstring = gcnew String(temp1.c_str());
@@ -672,9 +672,10 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 		String^ rstring = gcnew String(temp2.c_str());
 		std::string temp3 = std::to_string(statgreen);
 		String^ gstring = gcnew String(temp3.c_str());
-		this->set2->usend(rstring, gstring, bstring);
-		this->set2->usend(rstring, gstring, bstring);
-		this->set2->usend(rstring, gstring, bstring);
+		*/
+		this->set2->usend(statred, statgreen, statblue);
+		this->set2->usend(statred, statgreen, statblue);
+		this->set2->usend(statred, statgreen, statblue);
 	//const 	int tsize = temp.size() + 1
 	//	unsigned char a[255];
 		//strcpy(a, temp.c_str());

@@ -506,14 +506,14 @@ namespace lambient {
 					c3.b = c3.b / s;
 					}
 					
-					
+					/*
 					std::string temp1 = std::to_string(c1.r);
 					String^ rstring= gcnew String(temp1.c_str());
 					std::string temp2 = std::to_string(c1.g);
 					String^ gstring= gcnew String(temp2.c_str());
 					std::string temp3 = std::to_string(c1.b);
 					String^ bstring = gcnew String(temp3.c_str());
-					this->set1->usend(rstring, gstring, bstring);
+					
 
 					temp1 = std::to_string(c2.r);
 					rstring = gcnew String(temp1.c_str());
@@ -521,7 +521,7 @@ namespace lambient {
 					gstring = gcnew String(temp2.c_str());
 					temp3 = std::to_string(c2.b);
 					bstring = gcnew String(temp3.c_str());
-					this->set1->usend(rstring, gstring, bstring);
+					
 
 					temp1 = std::to_string(c3.r);
 					rstring = gcnew String(temp1.c_str());
@@ -529,7 +529,10 @@ namespace lambient {
 					gstring = gcnew String(temp2.c_str());
 					temp3 = std::to_string(c3.b);
 					bstring = gcnew String(temp3.c_str());
-					this->set1->usend(rstring, gstring, bstring);
+					*/
+					this->set1->usend(c1.r, c1.g, c1.b);
+					this->set1->usend(c2.r, c2.g, c2.b);
+					this->set1->usend(c3.r, c3.g, c3.b);
 					/*
 					this->leftBox->BackColor = Color::FromArgb(c1.r, c1.g, c1.b);
 					this->rightBox->BackColor = Color::FromArgb(c2.r, c2.g, c2.b);
