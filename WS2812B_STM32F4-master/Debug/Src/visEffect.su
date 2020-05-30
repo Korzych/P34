@@ -1,3 +1,4 @@
+visEffect.c:28:6:visAmbient	12	static
 visEffect.c:41:6:visHandle2	8	static
 visEffect.c:58:6:visInit	8	static
 visEffect.c:88:6:visHandle	8	static
