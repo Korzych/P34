@@ -44,7 +44,7 @@ UART_HandleTypeDef huart3;
 /* Private variables ---------------------------------------------------------*/
 uint8_t receiveUART[9];
 uint16_t sizeReceiveUART=9;
-uint8_t ring_colors[3][3]={{128,128,128},{128,128,128},{128,128,128}};
+uint8_t ring_colors[3][3]={{128,0,0},{0,0,128},{0,128,0}};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

@@ -37,7 +37,7 @@
 <stringAttribute key="com.atollic.truestudio.swv.core.datatrace_0" value="Enabled=true:Address=receiveUART[0]:Access=Read/Write:Size=Word:Function=Data Value"/>
 <stringAttribute key="com.atollic.truestudio.swv.core.datatrace_1" value="Enabled=true:Address=receiveUART[1]:Access=Read/Write:Size=Word:Function=Data Value"/>
 <stringAttribute key="com.atollic.truestudio.swv.core.datatrace_2" value="Enabled=true:Address=receiveUART[2]:Access=Read/Write:Size=Word:Function=Data Value"/>
-<stringAttribute key="com.atollic.truestudio.swv.core.datatrace_3" value="Enabled=false:Address=receiveUART[3]:Access=Read/Write:Size=Word:Function=Data Value"/>
+<stringAttribute key="com.atollic.truestudio.swv.core.datatrace_3" value="Enabled=true:Address=receiveUART[3]:Access=Read/Write:Size=Word:Function=Data Value"/>
 <stringAttribute key="com.atollic.truestudio.swv.core.itmports" value="0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"/>
 <stringAttribute key="com.atollic.truestudio.swv.core.itmports_priv" value="0:0:0:0"/>
 <stringAttribute key="com.atollic.truestudio.swv.core.pc_sample" value="0:16384"/>

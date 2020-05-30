@@ -27,7 +27,7 @@
 
 // Number of paralel output LED strips. Each has its own buffer.
 // Supports up to 16 outputs on a single GPIO port
-#define WS2812_BUFFER_COUNT 1
+#define WS2812_BUFFER_COUNT 3
 
 // Choose one of the bit-juggling setpixel implementation
 // *******************************************************
