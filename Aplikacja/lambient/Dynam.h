@@ -28,6 +28,7 @@ namespace lambient {
 
 		Settings^ set2 = gcnew Settings();
 			// int BaudR = 0;
+
 	public:
 		Dynam(void)
 		{
@@ -40,6 +41,7 @@ namespace lambient {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
+
 		~Dynam()
 		{
 			if (components)
@@ -539,14 +541,15 @@ namespace lambient {
 
 		}
 #pragma endregion
-	//private: void findPorts(void) {
-	//array<Object^>^ objectArray = System::IO::Ports::SerialPort::GetPortNames();
-	//this->pselect->Items->AddRange(objectArray);};
 
 	private: System::Void groupBox1_Enter(System::Object^  sender, System::EventArgs^  e) {
 		
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (set2->serialPort1->IsOpen)
+		{
+			set2->serialPort1->Close();
+		}
 	this->Hide();
 	
 	}
@@ -558,7 +561,7 @@ private: System::Void blendit_Click(System::Object^  sender, System::EventArgs^ 
 	int sumr,sumg,sumb,sum = 0;
 	if (this->cbwhite->Checked)
 	{
-	//	MessageBox::Show("White");
+	
 		sumr = sumr + 255;
 		sumg = sumg + 255;
 		sumb = sumb + 255;
@@ -566,7 +569,7 @@ private: System::Void blendit_Click(System::Object^  sender, System::EventArgs^ 
 	}
 	if (this->cbgreen->Checked)
 	{
-	//	MessageBox::Show("Green");
+	
 		sumg = sumg + 128;
 		sum++;
 	}
@@ -673,9 +676,12 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 		std::string temp3 = std::to_string(statgreen);
 		String^ gstring = gcnew String(temp3.c_str());
 		*/
-		this->set2->usend(statred, statgreen, statblue);
-		this->set2->usend(statred, statgreen, statblue);
-		this->set2->usend(statred, statgreen, statblue);
+		int a = statred;
+		int b = statgreen;
+		int c = statblue;
+		this->set2->usend(this->statred, this->statgreen, this->statblue);
+		this->set2->usend(this->statred, this->statgreen, this->statblue);
+		this->set2->usend(this->statred, this->statgreen, this->statblue);
 	//const 	int tsize = temp.size() + 1
 	//	unsigned char a[255];
 		//strcpy(a, temp.c_str());
@@ -694,18 +700,28 @@ private: System::Void numberboxr_ValueChanged(System::Object^  sender, System::E
 	int r1 = (int)numberboxr->Value;
 	int g1 = (int)numberboxg->Value;
 	int b1 = (int)numberboxb->Value;
+	this->statred = r1;
+	this->statblue = b1;
+	this->statgreen = g1;
+
 	this->rgbbox->BackColor = Color::FromArgb(r1, g1, b1);
 }
 private: System::Void numberboxg_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 	int r1 = (int)numberboxr->Value;
 	int g1 = (int)numberboxg->Value;
 	int b1 = (int)numberboxb->Value;
+	this->statred = r1;
+	this->statblue = b1;
+	this->statgreen = g1;
 	this->rgbbox->BackColor = Color::FromArgb(r1, g1, b1);
 }
 private: System::Void numberboxb_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 	int r1 = (int)numberboxr->Value;
 	int g1 = (int)numberboxg->Value;
 	int b1 = (int)numberboxb->Value;
+	this->statred = r1;
+	this->statblue = b1;
+	this->statgreen = g1;
 	this->rgbbox->BackColor = Color::FromArgb(r1, g1, b1);
 }
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {

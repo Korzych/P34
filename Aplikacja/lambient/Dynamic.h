@@ -70,8 +70,6 @@ namespace lambient {
 	private: bool running = false;
 	private: System::Windows::Forms::PictureBox^  modeBox2;
 	private: System::Windows::Forms::Button^  stopbutton;
-			 //private: COLORREF pixels;
-					  //private: System::Windows::Forms::Image myimage = gcnew Bitmap("C:\\Users\\Krzysiek\\Desktop\\Projekt\\1.jpg");
 
 	private:
 		/// <summary>
@@ -373,7 +371,7 @@ namespace lambient {
 #pragma endregion
 	private: System::Void groupBox2_Enter(System::Object^  sender, System::EventArgs^  e) {
 	}
-			 //Lokalizacja bÃªdzie zmienna
+			 //Lokalizacja bêdzie zmienna
 	private: System::Void rB2_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 		//Problem
 		this->modebox->Visible = false;
@@ -387,6 +385,12 @@ namespace lambient {
 	
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (set1->serialPort1->IsOpen)
+		{
+			
+			set1->serialPort1->Close();
+		}
+		//MyForm::FormWindowState::Minimized;
 		this->Hide();
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -395,7 +399,7 @@ namespace lambient {
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		set1->Show();
 	}
-	 //WÂ³Â¹czenie trybu dynamicznego
+	 //W³¹czenie trybu dynamicznego
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e);
 
 	private: System::Void numericUpDown2_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -404,12 +408,15 @@ namespace lambient {
 	}
 	private: System::Void stopbutton_Click(System::Object^  sender, System::EventArgs^  e) {
 		//running = false;
+
 		groupBox1->Enabled = true;
 		groupBox2->Enabled = true;
 		button1->Enabled = true;
 		button2->Enabled = true;
 		button4->Enabled = true;
 		this->oThread1->Abort();
+	
+
 		running = false;
 		
 
@@ -418,26 +425,16 @@ namespace lambient {
 	private: System::Void rightBox_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 	};
-	//WÂ¹tek do przechwytywania danych
+	//W¹tek do przechwytywania danych
 	public ref class DynamicThread
 	{
 		int mode, side, up;//1 to 3 boki,0 to 2 boki
 		Settings^ set1;
 		Kolor c1, c2, c3;
-		System::Windows::Forms::PictureBox^  leftBox;
-		System::Windows::Forms::PictureBox^ rightBox;
-		System::Windows::Forms::PictureBox^ topBox;
-
-	public: DynamicThread(){}
-	public: DynamicThread(int mode,int side,int up,Settings^ set1, System::Windows::Forms::PictureBox^  &leftBox, System::Windows::Forms::PictureBox^  &rightBox, System::Windows::Forms::PictureBox^  &topBox)
+	public:
+		Thread^ oThread2;
+	public: DynamicThread()
 	{
-		this->mode = mode;
-		this->side = side;
-		this->up = up;
-		this->set1 = set1;
-		this->leftBox = leftBox;
-		this->rightBox = rightBox;
-		this->topBox = topBox;
 	}
 	public: DynamicThread(int mode, int side, int up, Settings^ set1)
 	{
@@ -478,16 +475,16 @@ namespace lambient {
 							c2.b = c2.b + GetBValue(col2);
 							s++;
 						}
-						int c = c2.r;
+						
 					}
 					c1.r = c1.r / s;
 					c1.g = c1.g / s;
 					c1.b = c1.b / s;
 					c2.r = c2.r / s;
 					c2.g = c2.g / s;
-					c2.b = c2.b/s ;
+					c2.b = c2.b /s ;
 					s = 0;
-					if (mode == 1) //GÃ“RA i boki
+					if (mode == 1) //GÓRA i boki
 					{
 						//MessageBox::Show("running in full mode");
 					for(int x = 0; x < 1920; x +=(1920/5))
@@ -504,44 +501,18 @@ namespace lambient {
 					c3.r = c3.r / s;
 					c3.g = c3.g / s;
 					c3.b = c3.b / s;
+					
+
 					}
+					int r = c2.r;
+					int g = c2.g;
+					int b = c2.b;
 					
-					/*
-					std::string temp1 = std::to_string(c1.r);
-					String^ rstring= gcnew String(temp1.c_str());
-					std::string temp2 = std::to_string(c1.g);
-					String^ gstring= gcnew String(temp2.c_str());
-					std::string temp3 = std::to_string(c1.b);
-					String^ bstring = gcnew String(temp3.c_str());
-					
-
-					temp1 = std::to_string(c2.r);
-					rstring = gcnew String(temp1.c_str());
-					temp2 = std::to_string(c2.g);
-					gstring = gcnew String(temp2.c_str());
-					temp3 = std::to_string(c2.b);
-					bstring = gcnew String(temp3.c_str());
-					
-
-					temp1 = std::to_string(c3.r);
-					rstring = gcnew String(temp1.c_str());
-					temp2 = std::to_string(c3.g);
-					gstring = gcnew String(temp2.c_str());
-					temp3 = std::to_string(c3.b);
-					bstring = gcnew String(temp3.c_str());
-					*/
 					this->set1->usend(c1.r, c1.g, c1.b);
 					this->set1->usend(c2.r, c2.g, c2.b);
 					this->set1->usend(c3.r, c3.g, c3.b);
-					/*
-					this->leftBox->BackColor = Color::FromArgb(c1.r, c1.g, c1.b);
-					this->rightBox->BackColor = Color::FromArgb(c2.r, c2.g, c2.b);
-					this->topBox->BackColor = Color::FromArgb(c3.r, c3.g, c3.b);
-					this->topBox->Update();
-					this->leftBox->Update();
-					this->rightBox->Update();
-					*/
-				//Thread::Sleep(500);
+				
+					
 
 			}
 		

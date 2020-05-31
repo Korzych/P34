@@ -1,9 +1,8 @@
 #pragma once
-//#include <Windows.h>
+
 #include <fstream>
 #include <iostream>
-//#include "Dynam.h"
-//#include "MyForm.h"
+
 namespace lambient {
 
 	using namespace System;
@@ -206,11 +205,12 @@ namespace lambient {
 			// 
 			this->baudrates->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->baudrates->FormattingEnabled = true;
-			this->baudrates->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"9600", L"115200" });
+			this->baudrates->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"9600" });
 			this->baudrates->Location = System::Drawing::Point(6, 120);
 			this->baudrates->Name = L"baudrates";
 			this->baudrates->Size = System::Drawing::Size(121, 33);
 			this->baudrates->TabIndex = 1;
+			this->baudrates->SelectedIndexChanged += gcnew System::EventHandler(this, &Settings::baudrates_SelectedIndexChanged);
 			// 
 			// progressBar1
 			// 
@@ -304,25 +304,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 				this->serialPort1->BaudRate = Int32::Parse(this->baudrates->Text);
 				this->serialPort1->Open();
 				this->progressBar1->Value = 100;
-				//?
-			//	Dynam ^d2 = gcnew Dynam(this->serialPort1->PortName, this->serialPort1->BaudRate);
-				/*
 				
-
-				std::ofstream config;
-				config.open("portconfig.txt", std::ios::out);
-				if (config.good())
-				{
-					std::string portname = toStandardString(this->serialPort1->PortName);
-					int baud = this->serialPort1->BaudRate;
-					config.write(&portname[0], portname.length());
-					config << std::endl;
-					config << baud;
-					//config.write(&portname[0], portname.length());
-					MessageBox::Show("Configuration Finished");
-					config.close();
-					
-				}*/
 				MessageBox::Show("Configuration Finished");
 				
 			}
@@ -341,6 +323,8 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 	this->Hide();
 }
 		
+private: System::Void baudrates_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+}
 };
 
 }

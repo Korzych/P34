@@ -215,7 +215,7 @@ private: System::Void label1_Click_1(System::Object^  sender, System::EventArgs^
 }
 //Przycisk proceed 1 okno 
 private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
-	
+	this->WindowState = FormWindowState::Minimized;
 	
 	if (this->radioButton1->Checked == 1)
 	{
