@@ -35,8 +35,9 @@ Class lambient.Dynamic: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class lambient.DynamicThread: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(Int32, Int32, Int32, lambient.Settings): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-    Void .ctor(Int32, Int32, Int32, lambient.Settings, System.Windows.Forms.PictureBox*, System.Windows.Forms.PictureBox*, System.Windows.Forms.PictureBox*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Threading.Thread oThread2 : Public
   Methods:
     ThreadProc(): PrivateScope, Public, HideBySig
 Class lambient.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
