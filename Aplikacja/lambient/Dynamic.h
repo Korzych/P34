@@ -373,7 +373,7 @@ namespace lambient {
 #pragma endregion
 	private: System::Void groupBox2_Enter(System::Object^  sender, System::EventArgs^  e) {
 	}
-			 //Lokalizacja bêdzie zmienna
+			 //Lokalizacja bÃªdzie zmienna
 	private: System::Void rB2_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 		//Problem
 		this->modebox->Visible = false;
@@ -395,7 +395,7 @@ namespace lambient {
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		set1->Show();
 	}
-	 //W³¹czenie trybu dynamicznego
+	 //WÂ³Â¹czenie trybu dynamicznego
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e);
 
 	private: System::Void numericUpDown2_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -418,7 +418,7 @@ namespace lambient {
 	private: System::Void rightBox_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 	};
-	//W¹tek do przechwytywania danych
+	//WÂ¹tek do przechwytywania danych
 	public ref class DynamicThread
 	{
 		int mode, side, up;//1 to 3 boki,0 to 2 boki
@@ -474,8 +474,8 @@ namespace lambient {
 							
 							col2 = GetPixel(hdc, 1920 - x, y);
 							c2.r = c2.r + GetRValue(col2);
-							c2.g = c2.g + GetRValue(col2);
-							c2.b = c2.b + GetRValue(col2);
+							c2.g = c2.g + GetGValue(col2);
+							c2.b = c2.b + GetBValue(col2);
 							s++;
 						}
 						int c = c2.r;
@@ -487,7 +487,7 @@ namespace lambient {
 					c2.g = c2.g / s;
 					c2.b = c2.b/s ;
 					s = 0;
-					if (mode == 1) //GÓRA i boki
+					if (mode == 1) //GÃ“RA i boki
 					{
 						//MessageBox::Show("running in full mode");
 					for(int x = 0; x < 1920; x +=(1920/5))
