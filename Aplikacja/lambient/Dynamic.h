@@ -721,6 +721,7 @@ namespace lambient {
 		//running = false;
 		if (running == true)
 		{ 
+
 		int mode;
 		if (rB1->Checked)
 		{
@@ -828,8 +829,6 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 			{
 				c1.r = c1.b = c1.g = c2.b = c2.r = c2.g = c3.r = c3.g = c3.b = 0;
 				int s = 0;
-				
-				
 				//BOKI
 					for (int y=0; y < 1080; y +=(1080/2))
 					{
@@ -840,10 +839,11 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 							c1.g = c1.g + GetGValue(col1);
 							c1.b = c1.b + GetBValue(col1);
 							
-							col2 = GetPixel(hdc, 1920 - x, y);
+							col2 = GetPixel(hdc, 1919 - x, y);
 							c2.r = c2.r + GetRValue(col2);
 							c2.g = c2.g + GetGValue(col2);
 							c2.b = c2.b + GetBValue(col2);
+						
 							s++;
 						}
 						
@@ -853,7 +853,9 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 					c1.b = c1.b / s;
 					c2.r = c2.r / s;
 					c2.g = c2.g / s;
-					c2.b = c2.b /s ;
+					c2.b = c2.b / s;
+				
+					
 					s = 0;
 					if (mode == 1) //GÓRA i boki
 					{
@@ -869,6 +871,7 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 							s++;
 						}
 					}
+
 					c3.r = c3.r / s;
 					c3.g = c3.g / s;
 					c3.b = c3.b / s;
