@@ -135,7 +135,7 @@ namespace lambient {
 			// 
 			this->pselect->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->pselect->FormattingEnabled = true;
-			this->pselect->Location = System::Drawing::Point(6, 59);
+			this->pselect->Location = System::Drawing::Point(14, 85);
 			this->pselect->Name = L"pselect";
 			this->pselect->Size = System::Drawing::Size(121, 33);
 			this->pselect->TabIndex = 0;
@@ -152,16 +152,16 @@ namespace lambient {
 			this->groupBox1->Controls->Add(this->pselect);
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->groupBox1->Location = System::Drawing::Point(51, 58);
+			this->groupBox1->Location = System::Drawing::Point(51, 29);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(252, 287);
+			this->groupBox1->Size = System::Drawing::Size(203, 316);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Port Communication";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(10, 211);
+			this->button2->Location = System::Drawing::Point(10, 263);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(125, 35);
 			this->button2->TabIndex = 5;
@@ -171,7 +171,7 @@ namespace lambient {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(10, 170);
+			this->button1->Location = System::Drawing::Point(10, 207);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(125, 35);
 			this->button1->TabIndex = 4;
@@ -184,7 +184,7 @@ namespace lambient {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Impact", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label2->Location = System::Drawing::Point(6, 95);
+			this->label2->Location = System::Drawing::Point(10, 135);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(81, 21);
 			this->label2->TabIndex = 3;
@@ -195,18 +195,19 @@ namespace lambient {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Impact", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label1->Location = System::Drawing::Point(6, 35);
+			this->label1->Location = System::Drawing::Point(10, 61);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(110, 21);
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"Port Selection";
+			this->label1->Click += gcnew System::EventHandler(this, &Settings::label1_Click);
 			// 
 			// baudrates
 			// 
 			this->baudrates->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->baudrates->FormattingEnabled = true;
 			this->baudrates->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"9600" });
-			this->baudrates->Location = System::Drawing::Point(6, 120);
+			this->baudrates->Location = System::Drawing::Point(14, 159);
 			this->baudrates->Name = L"baudrates";
 			this->baudrates->Size = System::Drawing::Size(121, 33);
 			this->baudrates->TabIndex = 1;
@@ -241,7 +242,7 @@ namespace lambient {
 			this->version->Name = L"version";
 			this->version->Size = System::Drawing::Size(49, 17);
 			this->version->TabIndex = 13;
-			this->version->Text = L"V 0.23";
+			this->version->Text = L"V 0.97";
 			// 
 			// button3
 			// 
@@ -260,7 +261,7 @@ namespace lambient {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(837, 508);
+			this->ClientSize = System::Drawing::Size(282, 508);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->version);
 			this->Controls->Add(this->label3);
@@ -324,6 +325,8 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 }
 		
 private: System::Void baudrates_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 

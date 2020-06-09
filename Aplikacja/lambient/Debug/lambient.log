@@ -1,12 +1,28 @@
 ﻿  Dynam.cpp
+  Dynamic.cpp
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(460): warning C4677: 'DynamicThread': signature of non-private member contains assembly private type 'Kolor'
+  c:\users\krzysiek\source\repos\lambient\lambient\kolor.h(2): note: see declaration of 'Kolor'
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(471): warning C4677: 'DynamicThread': signature of non-private member contains assembly private type 'Kolor'
+  c:\users\krzysiek\source\repos\lambient\lambient\kolor.h(2): note: see declaration of 'Kolor'
   MyForm.cpp
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(460): warning C4677: 'DynamicThread': signature of non-private member contains assembly private type 'Kolor'
+  c:\users\krzysiek\source\repos\lambient\lambient\kolor.h(2): note: see declaration of 'Kolor'
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(471): warning C4677: 'DynamicThread': signature of non-private member contains assembly private type 'Kolor'
+  c:\users\krzysiek\source\repos\lambient\lambient\kolor.h(2): note: see declaration of 'Kolor'
   Generating Code...
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(454): warning C4700: uninitialized local variable 'hwnd' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(565): warning C4700: uninitialized local variable 'sumr' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(566): warning C4700: uninitialized local variable 'sumg' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(567): warning C4700: uninitialized local variable 'sumb' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(565): warning C4700: uninitialized local variable 'sumr' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(566): warning C4700: uninitialized local variable 'sumg' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(567): warning C4700: uninitialized local variable 'sumb' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(498): warning C4700: uninitialized local variable 'hwnd' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(568): warning C4700: uninitialized local variable 'hwnd' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(601): warning C4700: uninitialized local variable 'hwnd' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(636): warning C4700: uninitialized local variable 'hwnd' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(567): warning C4700: uninitialized local variable 'sumr' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(568): warning C4700: uninitialized local variable 'sumg' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(569): warning C4700: uninitialized local variable 'sumb' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(498): warning C4700: uninitialized local variable 'hwnd' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(568): warning C4700: uninitialized local variable 'hwnd' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(601): warning C4700: uninitialized local variable 'hwnd' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(636): warning C4700: uninitialized local variable 'hwnd' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(567): warning C4700: uninitialized local variable 'sumr' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(568): warning C4700: uninitialized local variable 'sumg' used
+c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(569): warning C4700: uninitialized local variable 'sumb' used
   Dynam.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   lambient.vcxproj -> C:\Users\Krzysiek\source\repos\lambient\Debug\lambient.exe

@@ -46,10 +46,14 @@ namespace lambient {
 			 ////////////////TEST////////////////////TEST
 			 //DynamicThread^ o1();
 			 Thread^ oThread1;
-			  //Thread^ scanthread = gcnew Thread(gcnew ThreadStart(o1, &MyThread::Scan));
-
-			// CapThread^ scan;
-			// Thread^ scanThread;
+			 Thread^ oThread2;
+			 Thread^ oThread3;
+			 Thread^ oThread4;
+			 Kolor^ k1=gcnew Kolor();
+			 Kolor^ k2 = gcnew Kolor();
+			 Kolor^ k3 = gcnew Kolor();
+			 
+			 
 
 			 /////////////////////////////////
 	private: System::Windows::Forms::NumericUpDown^  uprange;
@@ -136,7 +140,7 @@ namespace lambient {
 			this->version->Name = L"version";
 			this->version->Size = System::Drawing::Size(49, 17);
 			this->version->TabIndex = 17;
-			this->version->Text = L"V 0.23";
+			this->version->Text = L"V 0.97";
 			// 
 			// button2
 			// 
@@ -387,7 +391,7 @@ namespace lambient {
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (set1->serialPort1->IsOpen)
 		{
-			
+			this->DialogResult = System::Windows::Forms::DialogResult::OK;
 			set1->serialPort1->Close();
 		}
 		//MyForm::FormWindowState::Minimized;
@@ -408,15 +412,29 @@ namespace lambient {
 	}
 	private: System::Void stopbutton_Click(System::Object^  sender, System::EventArgs^  e) {
 		//running = false;
+		int mode;
+		if (rB1->Checked)
+		{
+			mode = 0;
 
+		}
+		else
+		{
+			mode = 1;
+		}
 		groupBox1->Enabled = true;
 		groupBox2->Enabled = true;
 		button1->Enabled = true;
 		button2->Enabled = true;
 		button4->Enabled = true;
 		this->oThread1->Abort();
-	
-
+		//this->oThread2->Abort();
+		//this->oThread3->Abort();
+		if (mode == 1)
+		{
+			this->oThread4->Abort();
+		}
+		
 		running = false;
 		
 
@@ -426,15 +444,41 @@ namespace lambient {
 	}
 	};
 	//W¹tek do przechwytywania danych
-	public ref class DynamicThread
+	public ref class DynamicThread : public Dynamic
 	{
 		int mode, side, up;//1 to 3 boki,0 to 2 boki
 		Settings^ set1;
 		Kolor c1, c2, c3;
+		Kolor^ clr;
+		Kolor^ clr2;
+		Kolor^ clr3;
 	public:
 		Thread^ oThread2;
 	public: DynamicThread()
 	{
+	}
+	public: DynamicThread(Settings^ set1, Kolor^ &cl, Kolor^ &cl2, Kolor^ &cl3)
+	{
+		
+
+		
+		this->clr = cl2;
+		this->clr3 = cl3;
+		this->set1 = set1;
+		this->clr = cl;
+
+	}
+	public: DynamicThread(int mode, int side, int up, Settings^ set1, Kolor ^&cl)
+	{
+
+		
+		this->mode = mode;
+		this->side = side;
+		this->up = up;
+		this->set1 = set1;
+		this->clr = cl;
+		
+
 	}
 	public: DynamicThread(int mode, int side, int up, Settings^ set1)
 	{
@@ -504,9 +548,7 @@ namespace lambient {
 					
 
 					}
-					int r = c2.r;
-					int g = c2.g;
-					int b = c2.b;
+					
 					
 					this->set1->usend(c1.r, c1.g, c1.b);
 					this->set1->usend(c2.r, c2.g, c2.b);
@@ -517,7 +559,130 @@ namespace lambient {
 			}
 		
 		}
+		void ThreadLeft()
+		{
+			COLORREF col1;
+			int s = 0;
+			HWND hwnd;
+			HDC hdc;
+			hdc = GetDC(hwnd);
+			FindWindowA(NULL, "tr");
+			while (true)
+			{
+				for (int y = 0; y < 1080; y += (1080 / 5))
+				{
+					for (int x = 0; x < side; x += (side / 5))
+					{
+						col1 = GetPixel(hdc, x, y);
+						c1.r = c1.r + GetRValue(col1);
+						c1.g = c1.g + GetGValue(col1);
+						c1.b = c1.b + GetBValue(col1);
+						s++;
+					}
 
+				}
+				c1.r = c1.r / s;
+				c1.g = c1.g / s;
+				c1.b = c1.b / s;
+				s = 0;
 
+				this->clr->r = c1.r;
+				this->clr->b = c1.b;
+				this->clr->g = c1.b;
+				c1.r = c1.b = c1.g = 0;
+			}
+		}
+		void ThreadRight()
+		{
+			COLORREF col1;
+			int s = 0;
+			HWND hwnd;
+			HDC hdc;
+			hdc = GetDC(hwnd);
+			FindWindowA(NULL, "tr");
+			while (true)
+			{
+				for (int y = 0; y < 1080; y += (1080 / 5))
+				{
+					for (int x = 0; x < side; x += (side / 5))
+					{
+						
+
+						col1 = GetPixel(hdc, 1920 - x, y);
+						c2.r = c2.r + GetRValue(col1);
+						c2.g = c2.g + GetGValue(col1);
+						c2.b = c2.b + GetBValue(col1);
+						s++;
+					}
+
+				}
+				c2.r = c2.r / s;
+				c2.g = c2.g / s;
+				c2.b = c2.b / s;
+				s = 0;
+
+				this->clr->r = c2.r;
+				this->clr->b = c2.b;
+				this->clr->g = c2.b;
+				c2.r = c2.b = c2.g = 0;
+			}
+		}
+		void ThreadTop()
+		{
+			COLORREF col1;
+			int s = 0;
+			HWND hwnd;
+			HDC hdc;
+			hdc = GetDC(hwnd);
+			FindWindowA(NULL, "tr");
+			while (true)
+			{
+				for (int x = 0; x < 1920; x += (1920 / 5))
+				{
+					for (int y = 0; y < up; y += (up / 5))
+					{
+						col1 = GetPixel(hdc, x, y);
+						c1.r = c1.r + GetRValue(col1);
+						c1.g = c1.g + GetGValue(col1);
+						c1.b = c1.b + GetBValue(col1);
+						s++;
+					}
+				}
+				c1.r = c1.r / s;
+				c1.g = c1.g / s;
+				c1.b = c1.b / s;
+				s = 0;
+
+				this->clr->r = c1.r;
+				this->clr->b = c1.b;
+				this->clr->g = c1.b;
+				c1.r = c1.b = c1.g = 0;
+			}
+		}
+		void ThreadSend()
+		{
+			Sleep(1500);
+
+				this->c1.r = this->clr->r;
+				this->c1.g = this->clr->g;
+				this->c1.b = this->clr->b;
+				int i = this->clr->r;
+				int j = this->clr->g;
+				int k = this->clr->b;
+				MessageBox::Show("Sending R: " + i + "G: " + j + "B: " + k);
+				this->c2.r = this->clr2->r;
+				this->c2.g = this->clr2->g;
+				this->c2.b = this->clr2->b;
+
+				this->c3.r = this->clr3->r;
+				this->c3.g = this->clr3->g;
+				this->c3.b = this->clr3->b;
+
+				this->set1->usend(c1.g, c1.g, c1.b);
+				this->set1->usend(c2.r, c2.g, c2.b);
+				this->set1->usend(c3.r, c3.g, c3.b);
+			
+			
+		}
 	};
 }

@@ -9,3 +9,4 @@ ref struct Kolor
 		this->b = 0;
 	}
 };
+

@@ -471,7 +471,8 @@ namespace lambient {
 			this->version->Name = L"version";
 			this->version->Size = System::Drawing::Size(49, 17);
 			this->version->TabIndex = 12;
-			this->version->Text = L"V 0.23";
+			this->version->Text = L"V 0.97";
+			this->version->Click += gcnew System::EventHandler(this, &Dynam::version_Click);
 			// 
 			// radioButton1
 			// 
@@ -550,6 +551,7 @@ namespace lambient {
 		{
 			set2->serialPort1->Close();
 		}
+
 	this->Hide();
 	
 	}
@@ -785,5 +787,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 
 }
 
+private: System::Void version_Click(System::Object^  sender, System::EventArgs^  e) {
+}
 };
 }

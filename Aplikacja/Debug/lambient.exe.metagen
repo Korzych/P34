@@ -34,12 +34,19 @@ Class lambient.Dynamic: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class lambient.DynamicThread: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :lambient.Dynamic
     Void .ctor(Int32, Int32, Int32, lambient.Settings): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Int32, Int32, Int32, lambient.Settings, Kolor*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(lambient.Settings, Kolor*, Kolor*, Kolor*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     System.Threading.Thread oThread2 : Public
   Methods:
     ThreadProc(): PrivateScope, Public, HideBySig
+    ThreadLeft(): PrivateScope, Public, HideBySig
+    ThreadRight(): PrivateScope, Public, HideBySig
+    ThreadTop(): PrivateScope, Public, HideBySig
+    ThreadSend(): PrivateScope, Public, HideBySig
 Class lambient.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

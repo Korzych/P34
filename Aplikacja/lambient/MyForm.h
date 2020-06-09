@@ -153,7 +153,7 @@ namespace lambient {
 			this->version->Name = L"version";
 			this->version->Size = System::Drawing::Size(49, 17);
 			this->version->TabIndex = 8;
-			this->version->Text = L"V 0.23";
+			this->version->Text = L"V 0.97";
 			this->version->Click += gcnew System::EventHandler(this, &MyForm::version_Click);
 			// 
 			// button2
@@ -215,19 +215,21 @@ private: System::Void label1_Click_1(System::Object^  sender, System::EventArgs^
 }
 //Przycisk proceed 1 okno 
 private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
-	this->WindowState = FormWindowState::Minimized;
-	
+	//this->WindowState = FormWindowState::Minimized;
+	this->Hide();
 	if (this->radioButton1->Checked == 1)
 	{
 		
 		d2->ShowDialog();
+	
 	}
 	else
 	{
 		d1->ShowDialog();
 		//MessageBox::Show("Dynamic Mode HERE");
 	}
-
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	this->Show();
 }
 private: System::Void version_Click(System::Object^  sender, System::EventArgs^  e) {
 }
