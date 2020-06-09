@@ -556,6 +556,7 @@ namespace lambient {
 	
 	}
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	Application::Exit();
 }
 

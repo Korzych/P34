@@ -61,10 +61,10 @@ namespace lambient {
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::PictureBox^  leftBox;
-	private: System::Windows::Forms::PictureBox^  rightBox;
 
-	private: System::Windows::Forms::PictureBox^  topBox;
+
+
+
 
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::RadioButton^  rB2;
@@ -99,9 +99,6 @@ namespace lambient {
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->leftBox = (gcnew System::Windows::Forms::PictureBox());
-			this->rightBox = (gcnew System::Windows::Forms::PictureBox());
-			this->topBox = (gcnew System::Windows::Forms::PictureBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->rB2 = (gcnew System::Windows::Forms::RadioButton());
 			this->rB1 = (gcnew System::Windows::Forms::RadioButton());
@@ -111,9 +108,6 @@ namespace lambient {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->edgerange))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->uprange))->BeginInit();
 			this->groupBox1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->leftBox))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rightBox))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->topBox))->BeginInit();
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->modebox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->modeBox2))->BeginInit();
@@ -207,7 +201,7 @@ namespace lambient {
 			this->groupBox1->Controls->Add(this->uprange);
 			this->groupBox1->Controls->Add(this->edgerange);
 			this->groupBox1->ForeColor = System::Drawing::Color::White;
-			this->groupBox1->Location = System::Drawing::Point(94, 246);
+			this->groupBox1->Location = System::Drawing::Point(32, 305);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(251, 140);
 			this->groupBox1->TabIndex = 24;
@@ -235,41 +229,13 @@ namespace lambient {
 			this->label2->Text = L"Left/Right";
 			this->label2->Click += gcnew System::EventHandler(this, &Dynamic::label2_Click);
 			// 
-			// leftBox
-			// 
-			this->leftBox->BackColor = System::Drawing::Color::Transparent;
-			this->leftBox->Location = System::Drawing::Point(5, 48);
-			this->leftBox->Name = L"leftBox";
-			this->leftBox->Size = System::Drawing::Size(68, 403);
-			this->leftBox->TabIndex = 25;
-			this->leftBox->TabStop = false;
-			// 
-			// rightBox
-			// 
-			this->rightBox->BackColor = System::Drawing::Color::Transparent;
-			this->rightBox->Location = System::Drawing::Point(764, 48);
-			this->rightBox->Name = L"rightBox";
-			this->rightBox->Size = System::Drawing::Size(68, 403);
-			this->rightBox->TabIndex = 26;
-			this->rightBox->TabStop = false;
-			this->rightBox->Click += gcnew System::EventHandler(this, &Dynamic::rightBox_Click);
-			// 
-			// topBox
-			// 
-			this->topBox->BackColor = System::Drawing::Color::Transparent;
-			this->topBox->Location = System::Drawing::Point(176, 9);
-			this->topBox->Name = L"topBox";
-			this->topBox->Size = System::Drawing::Size(480, 67);
-			this->topBox->TabIndex = 27;
-			this->topBox->TabStop = false;
-			// 
 			// groupBox2
 			// 
 			this->groupBox2->BackColor = System::Drawing::Color::Transparent;
 			this->groupBox2->Controls->Add(this->rB2);
 			this->groupBox2->Controls->Add(this->rB1);
 			this->groupBox2->ForeColor = System::Drawing::Color::White;
-			this->groupBox2->Location = System::Drawing::Point(94, 98);
+			this->groupBox2->Location = System::Drawing::Point(32, 172);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(251, 127);
 			this->groupBox2->TabIndex = 28;
@@ -306,7 +272,7 @@ namespace lambient {
 			this->modebox->BackColor = System::Drawing::Color::Transparent;
 			this->modebox->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"modebox.BackgroundImage")));
 			this->modebox->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->modebox->Location = System::Drawing::Point(363, 108);
+			this->modebox->Location = System::Drawing::Point(67, 66);
 			this->modebox->Name = L"modebox";
 			this->modebox->Size = System::Drawing::Size(180, 100);
 			this->modebox->TabIndex = 29;
@@ -317,12 +283,13 @@ namespace lambient {
 			this->modeBox2->BackColor = System::Drawing::Color::Transparent;
 			this->modeBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"modeBox2.BackgroundImage")));
 			this->modeBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->modeBox2->Location = System::Drawing::Point(363, 108);
+			this->modeBox2->Location = System::Drawing::Point(67, 66);
 			this->modeBox2->Name = L"modeBox2";
 			this->modeBox2->Size = System::Drawing::Size(180, 100);
 			this->modeBox2->TabIndex = 30;
 			this->modeBox2->TabStop = false;
 			this->modeBox2->Visible = false;
+			this->modeBox2->Click += gcnew System::EventHandler(this, &Dynamic::modeBox2_Click);
 			// 
 			// stopbutton
 			// 
@@ -346,9 +313,6 @@ namespace lambient {
 			this->Controls->Add(this->modeBox2);
 			this->Controls->Add(this->modebox);
 			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->topBox);
-			this->Controls->Add(this->rightBox);
-			this->Controls->Add(this->leftBox);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->startbutton);
@@ -361,9 +325,6 @@ namespace lambient {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->uprange))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->leftBox))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rightBox))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->topBox))->EndInit();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->modebox))->EndInit();
@@ -398,6 +359,7 @@ namespace lambient {
 		this->Hide();
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		Application::Exit();
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -430,11 +392,12 @@ namespace lambient {
 		this->oThread1->Abort();
 		//this->oThread2->Abort();
 		//this->oThread3->Abort();
+		/*
 		if (mode == 1)
 		{
-			this->oThread4->Abort();
+			this->oThread1->Abort();
 		}
-		
+		*/
 		running = false;
 		
 
@@ -442,7 +405,9 @@ namespace lambient {
 
 	private: System::Void rightBox_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-	};
+	private: System::Void modeBox2_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+};
 	//W¹tek do przechwytywania danych
 	public ref class DynamicThread : public Dynamic
 	{
