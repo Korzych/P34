@@ -831,9 +831,9 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 				
 				
 				//BOKI
-					for (int y=0; y < 1080; y +=(1080/3))
+					for (int y=0; y < 1080; y +=(1080/2))
 					{
-						for (int x = 0; x < side; x += (side / 3))
+						for (int x = 0; x < side; x += (side / 2))
 						{
 							col1 = GetPixel(hdc, x, y);
 							c1.r = c1.r + GetRValue(col1);
@@ -858,9 +858,9 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 					if (mode == 1) //GÓRA i boki
 					{
 						//MessageBox::Show("running in full mode");
-					for(int x = 0; x < 1920; x +=(1920/3))
+					for(int x = 0; x < 1920; x +=(1920/2))
 					{
-						for (int y = 0; y < up; y += (up / 3))
+						for (int y = 0; y < up; y += (up / 2))
 						{
 							col1 = GetPixel(hdc, x, y);
 							c3.r = c3.r + GetRValue(col1);
