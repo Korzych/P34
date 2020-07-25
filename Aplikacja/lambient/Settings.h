@@ -55,17 +55,20 @@ namespace lambient {
 
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::ComboBox^  baudrates;
+
 
 
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button1;
-	private: System::Windows::Forms::Label^  label2;
+
 	private: System::Windows::Forms::ProgressBar^  progressBar1;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  version;
 	public: System::IO::Ports::SerialPort^  serialPort1;
 	private: System::Windows::Forms::Button^  button3;
+
+
+
 	public:
 	private: System::ComponentModel::IContainer^  components;
 			 /*
@@ -81,7 +84,10 @@ namespace lambient {
 		uint8_t y = (uint8_t)g;
 		uint8_t z = (uint8_t)b;
 		auto a1 = gcnew cli::array<System::Byte>{x,y,z};
-		
+		if (!this->serialPort1->IsOpen)
+		{
+			this->serialPort1->Open();
+		}
 		this->serialPort1->Write(a1, 0, a1->Length);
 	//	this->serialPort1->Write(a2, 0, a2->Length);
 	//this->serialPort1->Write(a3, 0, a3->Length);
@@ -120,9 +126,7 @@ namespace lambient {
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->baudrates = (gcnew System::Windows::Forms::ComboBox());
 			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->version = (gcnew System::Windows::Forms::Label());
@@ -146,22 +150,20 @@ namespace lambient {
 			this->groupBox1->BackColor = System::Drawing::Color::Transparent;
 			this->groupBox1->Controls->Add(this->button2);
 			this->groupBox1->Controls->Add(this->button1);
-			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Controls->Add(this->baudrates);
 			this->groupBox1->Controls->Add(this->pselect);
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->groupBox1->Location = System::Drawing::Point(51, 29);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(203, 316);
+			this->groupBox1->Size = System::Drawing::Size(203, 242);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Port Communication";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(10, 263);
+			this->button2->Location = System::Drawing::Point(14, 193);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(125, 35);
 			this->button2->TabIndex = 5;
@@ -171,24 +173,13 @@ namespace lambient {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(10, 207);
+			this->button1->Location = System::Drawing::Point(14, 152);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(125, 35);
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"Open Port";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Settings::button1_Click);
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Impact", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->label2->Location = System::Drawing::Point(10, 135);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(81, 21);
-			this->label2->TabIndex = 3;
-			this->label2->Text = L"Baud Rate";
 			// 
 			// label1
 			// 
@@ -202,20 +193,9 @@ namespace lambient {
 			this->label1->Text = L"Port Selection";
 			this->label1->Click += gcnew System::EventHandler(this, &Settings::label1_Click);
 			// 
-			// baudrates
-			// 
-			this->baudrates->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->baudrates->FormattingEnabled = true;
-			this->baudrates->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"9600" });
-			this->baudrates->Location = System::Drawing::Point(14, 159);
-			this->baudrates->Name = L"baudrates";
-			this->baudrates->Size = System::Drawing::Size(121, 33);
-			this->baudrates->TabIndex = 1;
-			this->baudrates->SelectedIndexChanged += gcnew System::EventHandler(this, &Settings::baudrates_SelectedIndexChanged);
-			// 
 			// progressBar1
 			// 
-			this->progressBar1->Location = System::Drawing::Point(51, 394);
+			this->progressBar1->Location = System::Drawing::Point(51, 317);
 			this->progressBar1->Name = L"progressBar1";
 			this->progressBar1->Size = System::Drawing::Size(125, 30);
 			this->progressBar1->TabIndex = 2;
@@ -227,7 +207,7 @@ namespace lambient {
 			this->label3->BackColor = System::Drawing::Color::Transparent;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label3->Location = System::Drawing::Point(46, 366);
+			this->label3->Location = System::Drawing::Point(46, 289);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(100, 25);
 			this->label3->TabIndex = 3;
@@ -248,7 +228,7 @@ namespace lambient {
 			// 
 			this->button3->Font = (gcnew System::Drawing::Font(L"Impact", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button3->Location = System::Drawing::Point(15, 456);
+			this->button3->Location = System::Drawing::Point(12, 368);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(93, 29);
 			this->button3->TabIndex = 14;
@@ -261,12 +241,13 @@ namespace lambient {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(282, 508);
+			this->ClientSize = System::Drawing::Size(282, 409);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->version);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->progressBar1);
 			this->Controls->Add(this->groupBox1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Settings";
 			this->Text = L"Settings";
 			this->groupBox1->ResumeLayout(false);
@@ -292,7 +273,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 	 
 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (this->baudrates->Text == String::Empty||this->pselect->Text==String::Empty)
+	if (this->pselect->Text==String::Empty)
 	{
 		MessageBox::Show("select all options and try again");
 	}
@@ -302,10 +283,12 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			if (!this->serialPort1->IsOpen)
 			{
 				this->serialPort1->PortName = this->pselect->Text;
-				this->serialPort1->BaudRate = Int32::Parse(this->baudrates->Text);
+				this->serialPort1->BaudRate = 9600;
 				this->serialPort1->Open();
 				this->progressBar1->Value = 100;
-				
+				//TEST
+				System::IO::File::WriteAllText("config.txt", this->serialPort1->PortName);
+			
 				MessageBox::Show("Configuration Finished");
 				
 			}
@@ -327,6 +310,8 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 private: System::Void baudrates_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 }
 private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 

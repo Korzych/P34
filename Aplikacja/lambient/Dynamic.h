@@ -4,6 +4,8 @@
 #include <Windows.h>
 #include <vector>
 #include "Kolor.h"
+#include <regex>
+#include <cliext/vector>
 
 namespace lambient {
 
@@ -52,7 +54,8 @@ namespace lambient {
 			 Kolor^ k1=gcnew Kolor();
 			 Kolor^ k2 = gcnew Kolor();
 			 Kolor^ k3 = gcnew Kolor();
-			 
+			 Compfl^ cmpfl=gcnew Compfl();
+			 cliext::vector<Compfl^> compositionVector;
 			 
 
 			 /////////////////////////////////
@@ -79,12 +82,13 @@ namespace lambient {
 	private: System::Windows::Forms::GroupBox^  groupBox3;
 	private: System::Windows::Forms::RadioButton^  cbutton;
 	private: System::Windows::Forms::GroupBox^  groupBox4;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown1;
+	private: System::Windows::Forms::NumericUpDown^  timebox;
+
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::NumericUpDown^  numberboxb;
 	private: System::Windows::Forms::NumericUpDown^  numberboxg;
 	private: System::Windows::Forms::NumericUpDown^  numberboxr;
-	private: System::Windows::Forms::PictureBox^  rgbbox;
+	public: System::Windows::Forms::PictureBox^  rgbbox;
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  label5;
@@ -94,9 +98,13 @@ namespace lambient {
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::Label^  label8;
-	private: System::Windows::Forms::ComboBox^  comboBox1;
+
+
 	private: System::Windows::Forms::Button^  button7;
 	private: System::Windows::Forms::GroupBox^  groupBox5;
+	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::Button^  button8;
 
 
 	private:
@@ -133,6 +141,18 @@ namespace lambient {
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->cbutton = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
+			this->button8 = (gcnew System::Windows::Forms::Button());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->timebox = (gcnew System::Windows::Forms::NumericUpDown());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->numberboxb = (gcnew System::Windows::Forms::NumericUpDown());
 			this->numberboxg = (gcnew System::Windows::Forms::NumericUpDown());
 			this->numberboxr = (gcnew System::Windows::Forms::NumericUpDown());
@@ -140,17 +160,7 @@ namespace lambient {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->button7 = (gcnew System::Windows::Forms::Button());
-			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->edgerange))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->uprange))->BeginInit();
 			this->groupBox1->SuspendLayout();
@@ -159,12 +169,12 @@ namespace lambient {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->modeBox2))->BeginInit();
 			this->groupBox3->SuspendLayout();
 			this->groupBox4->SuspendLayout();
+			this->groupBox5->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->timebox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxb))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxg))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxr))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rgbbox))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
-			this->groupBox5->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// button1
@@ -361,6 +371,7 @@ namespace lambient {
 			// 
 			this->dbutton->AutoSize = true;
 			this->dbutton->BackColor = System::Drawing::Color::Transparent;
+			this->dbutton->Checked = true;
 			this->dbutton->Location = System::Drawing::Point(15, 50);
 			this->dbutton->Name = L"dbutton";
 			this->dbutton->Size = System::Drawing::Size(17, 16);
@@ -392,8 +403,8 @@ namespace lambient {
 			this->cbutton->Name = L"cbutton";
 			this->cbutton->Size = System::Drawing::Size(17, 16);
 			this->cbutton->TabIndex = 34;
-			this->cbutton->TabStop = true;
 			this->cbutton->UseVisualStyleBackColor = false;
+			this->cbutton->CheckedChanged += gcnew System::EventHandler(this, &Dynamic::cbutton_CheckedChanged);
 			// 
 			// groupBox4
 			// 
@@ -404,7 +415,7 @@ namespace lambient {
 			this->groupBox4->Controls->Add(this->button3);
 			this->groupBox4->Controls->Add(this->label7);
 			this->groupBox4->Controls->Add(this->textBox1);
-			this->groupBox4->Controls->Add(this->numericUpDown1);
+			this->groupBox4->Controls->Add(this->timebox);
 			this->groupBox4->Controls->Add(this->label6);
 			this->groupBox4->Controls->Add(this->numberboxb);
 			this->groupBox4->Controls->Add(this->numberboxg);
@@ -413,6 +424,7 @@ namespace lambient {
 			this->groupBox4->Controls->Add(this->label1);
 			this->groupBox4->Controls->Add(this->label4);
 			this->groupBox4->Controls->Add(this->label5);
+			this->groupBox4->Enabled = false;
 			this->groupBox4->ForeColor = System::Drawing::SystemColors::ButtonFace;
 			this->groupBox4->Location = System::Drawing::Point(399, 50);
 			this->groupBox4->Name = L"groupBox4";
@@ -420,6 +432,168 @@ namespace lambient {
 			this->groupBox4->TabIndex = 35;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Composition Mode";
+			// 
+			// groupBox5
+			// 
+			this->groupBox5->BackColor = System::Drawing::Color::Transparent;
+			this->groupBox5->Controls->Add(this->button8);
+			this->groupBox5->Controls->Add(this->textBox2);
+			this->groupBox5->Controls->Add(this->button7);
+			this->groupBox5->Controls->Add(this->label8);
+			this->groupBox5->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->groupBox5->Location = System::Drawing::Point(196, 30);
+			this->groupBox5->Name = L"groupBox5";
+			this->groupBox5->Size = System::Drawing::Size(210, 145);
+			this->groupBox5->TabIndex = 36;
+			this->groupBox5->TabStop = false;
+			this->groupBox5->Text = L"Load Composition";
+			// 
+			// button8
+			// 
+			this->button8->BackColor = System::Drawing::Color::Transparent;
+			this->button8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button8.BackgroundImage")));
+			this->button8->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->button8->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button8->Font = (gcnew System::Drawing::Font(L"Impact", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button8->ForeColor = System::Drawing::Color::Black;
+			this->button8->Location = System::Drawing::Point(164, 51);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(36, 36);
+			this->button8->TabIndex = 38;
+			this->button8->UseVisualStyleBackColor = false;
+			this->button8->Click += gcnew System::EventHandler(this, &Dynamic::button8_Click);
+			// 
+			// textBox2
+			// 
+			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->textBox2->Location = System::Drawing::Point(15, 56);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(147, 30);
+			this->textBox2->TabIndex = 37;
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &Dynamic::textBox2_TextChanged);
+			// 
+			// button7
+			// 
+			this->button7->BackColor = System::Drawing::SystemColors::ActiveBorder;
+			this->button7->Font = (gcnew System::Drawing::Font(L"Impact", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button7->ForeColor = System::Drawing::Color::Black;
+			this->button7->Location = System::Drawing::Point(16, 95);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(147, 38);
+			this->button7->TabIndex = 33;
+			this->button7->Text = L"Load ";
+			this->button7->UseVisualStyleBackColor = false;
+			this->button7->Click += gcnew System::EventHandler(this, &Dynamic::button7_Click);
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->BackColor = System::Drawing::Color::Transparent;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label8->ForeColor = System::Drawing::Color::White;
+			this->label8->Location = System::Drawing::Point(11, 25);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(163, 25);
+			this->label8->TabIndex = 32;
+			this->label8->Text = L"Composition Name";
+			// 
+			// button6
+			// 
+			this->button6->BackColor = System::Drawing::SystemColors::ActiveBorder;
+			this->button6->Font = (gcnew System::Drawing::Font(L"Impact", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button6->ForeColor = System::Drawing::Color::Black;
+			this->button6->Location = System::Drawing::Point(116, 346);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(163, 38);
+			this->button6->TabIndex = 30;
+			this->button6->Text = L"Save Composition ";
+			this->button6->UseVisualStyleBackColor = false;
+			this->button6->Click += gcnew System::EventHandler(this, &Dynamic::button6_Click);
+			// 
+			// button5
+			// 
+			this->button5->BackColor = System::Drawing::SystemColors::ActiveBorder;
+			this->button5->Font = (gcnew System::Drawing::Font(L"Impact", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button5->ForeColor = System::Drawing::Color::Black;
+			this->button5->Location = System::Drawing::Point(116, 304);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(163, 38);
+			this->button5->TabIndex = 29;
+			this->button5->Text = L"Delete Last Color";
+			this->button5->UseVisualStyleBackColor = false;
+			this->button5->Click += gcnew System::EventHandler(this, &Dynamic::button5_Click_1);
+			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::SystemColors::ActiveBorder;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Impact", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button3->ForeColor = System::Drawing::Color::Black;
+			this->button3->Location = System::Drawing::Point(116, 260);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(163, 38);
+			this->button3->TabIndex = 28;
+			this->button3->Text = L"Add Color";
+			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &Dynamic::button3_Click);
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->BackColor = System::Drawing::Color::Transparent;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label7->ForeColor = System::Drawing::Color::White;
+			this->label7->Location = System::Drawing::Point(27, 30);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(163, 25);
+			this->label7->TabIndex = 27;
+			this->label7->Text = L"Composition Name";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->textBox1->Location = System::Drawing::Point(32, 58);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(153, 27);
+			this->textBox1->TabIndex = 26;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Dynamic::textBox1_TextChanged);
+			// 
+			// timebox
+			// 
+			this->timebox->BackColor = System::Drawing::Color::White;
+			this->timebox->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->timebox->Increment = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100, 0, 0, 0 });
+			this->timebox->Location = System::Drawing::Point(103, 211);
+			this->timebox->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10000, 0, 0, 0 });
+			this->timebox->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 500, 0, 0, 0 });
+			this->timebox->Name = L"timebox";
+			this->timebox->Size = System::Drawing::Size(82, 30);
+			this->timebox->TabIndex = 25;
+			this->timebox->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 500, 0, 0, 0 });
+			this->timebox->ValueChanged += gcnew System::EventHandler(this, &Dynamic::numericUpDown1_ValueChanged);
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->BackColor = System::Drawing::Color::Transparent;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label6->ForeColor = System::Drawing::Color::White;
+			this->label6->Location = System::Drawing::Point(6, 216);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(91, 25);
+			this->label6->TabIndex = 24;
+			this->label6->Text = L"Time [ms]";
+			this->label6->Click += gcnew System::EventHandler(this, &Dynamic::label6_Click);
 			// 
 			// numberboxb
 			// 
@@ -440,6 +614,7 @@ namespace lambient {
 			this->numberboxg->Name = L"numberboxg";
 			this->numberboxg->Size = System::Drawing::Size(120, 30);
 			this->numberboxg->TabIndex = 22;
+			this->numberboxg->ValueChanged += gcnew System::EventHandler(this, &Dynamic::numberboxg_ValueChanged);
 			// 
 			// numberboxr
 			// 
@@ -455,7 +630,7 @@ namespace lambient {
 			// rgbbox
 			// 
 			this->rgbbox->BackColor = System::Drawing::Color::Black;
-			this->rgbbox->Location = System::Drawing::Point(208, 170);
+			this->rgbbox->Location = System::Drawing::Point(211, 183);
 			this->rgbbox->Name = L"rgbbox";
 			this->rgbbox->Size = System::Drawing::Size(188, 71);
 			this->rgbbox->TabIndex = 21;
@@ -499,142 +674,9 @@ namespace lambient {
 			this->label5->TabIndex = 17;
 			this->label5->Text = L"R";
 			// 
-			// numericUpDown1
+			// openFileDialog1
 			// 
-			this->numericUpDown1->BackColor = System::Drawing::Color::White;
-			this->numericUpDown1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->numericUpDown1->Increment = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100, 0, 0, 0 });
-			this->numericUpDown1->Location = System::Drawing::Point(103, 211);
-			this->numericUpDown1->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10000, 0, 0, 0 });
-			this->numericUpDown1->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 500, 0, 0, 0 });
-			this->numericUpDown1->Name = L"numericUpDown1";
-			this->numericUpDown1->Size = System::Drawing::Size(82, 30);
-			this->numericUpDown1->TabIndex = 25;
-			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 500, 0, 0, 0 });
-			this->numericUpDown1->ValueChanged += gcnew System::EventHandler(this, &Dynamic::numericUpDown1_ValueChanged);
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->BackColor = System::Drawing::Color::Transparent;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->label6->ForeColor = System::Drawing::Color::White;
-			this->label6->Location = System::Drawing::Point(6, 216);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(91, 25);
-			this->label6->TabIndex = 24;
-			this->label6->Text = L"Time [ms]";
-			this->label6->Click += gcnew System::EventHandler(this, &Dynamic::label6_Click);
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(32, 58);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(153, 22);
-			this->textBox1->TabIndex = 26;
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->BackColor = System::Drawing::Color::Transparent;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->label7->ForeColor = System::Drawing::Color::White;
-			this->label7->Location = System::Drawing::Point(27, 30);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(163, 25);
-			this->label7->TabIndex = 27;
-			this->label7->Text = L"Composition Name";
-			// 
-			// button3
-			// 
-			this->button3->BackColor = System::Drawing::SystemColors::ActiveBorder;
-			this->button3->Font = (gcnew System::Drawing::Font(L"Impact", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->button3->ForeColor = System::Drawing::Color::Black;
-			this->button3->Location = System::Drawing::Point(117, 260);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(163, 38);
-			this->button3->TabIndex = 28;
-			this->button3->Text = L"Add Color";
-			this->button3->UseVisualStyleBackColor = false;
-			this->button3->Click += gcnew System::EventHandler(this, &Dynamic::button3_Click);
-			// 
-			// button5
-			// 
-			this->button5->BackColor = System::Drawing::SystemColors::ActiveBorder;
-			this->button5->Font = (gcnew System::Drawing::Font(L"Impact", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->button5->ForeColor = System::Drawing::Color::Black;
-			this->button5->Location = System::Drawing::Point(117, 300);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(163, 38);
-			this->button5->TabIndex = 29;
-			this->button5->Text = L"Delete Last Color";
-			this->button5->UseVisualStyleBackColor = false;
-			// 
-			// button6
-			// 
-			this->button6->BackColor = System::Drawing::SystemColors::ActiveBorder;
-			this->button6->Font = (gcnew System::Drawing::Font(L"Impact", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->button6->ForeColor = System::Drawing::Color::Black;
-			this->button6->Location = System::Drawing::Point(117, 340);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(163, 38);
-			this->button6->TabIndex = 30;
-			this->button6->Text = L"Save Composition ";
-			this->button6->UseVisualStyleBackColor = false;
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(16, 56);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(147, 24);
-			this->comboBox1->TabIndex = 31;
-			// 
-			// label8
-			// 
-			this->label8->AutoSize = true;
-			this->label8->BackColor = System::Drawing::Color::Transparent;
-			this->label8->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->label8->ForeColor = System::Drawing::Color::White;
-			this->label8->Location = System::Drawing::Point(11, 25);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(163, 25);
-			this->label8->TabIndex = 32;
-			this->label8->Text = L"Composition Name";
-			// 
-			// button7
-			// 
-			this->button7->BackColor = System::Drawing::SystemColors::ActiveBorder;
-			this->button7->Font = (gcnew System::Drawing::Font(L"Impact", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->button7->ForeColor = System::Drawing::Color::Black;
-			this->button7->Location = System::Drawing::Point(16, 86);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(147, 38);
-			this->button7->TabIndex = 33;
-			this->button7->Text = L"Load ";
-			this->button7->UseVisualStyleBackColor = false;
-			// 
-			// groupBox5
-			// 
-			this->groupBox5->BackColor = System::Drawing::Color::Transparent;
-			this->groupBox5->Controls->Add(this->button7);
-			this->groupBox5->Controls->Add(this->comboBox1);
-			this->groupBox5->Controls->Add(this->label8);
-			this->groupBox5->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->groupBox5->Location = System::Drawing::Point(222, 30);
-			this->groupBox5->Name = L"groupBox5";
-			this->groupBox5->Size = System::Drawing::Size(184, 130);
-			this->groupBox5->TabIndex = 36;
-			this->groupBox5->TabStop = false;
-			this->groupBox5->Text = L"Load Composition";
+			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
 			// Dynamic
 			// 
@@ -653,6 +695,7 @@ namespace lambient {
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->version);
 			this->Controls->Add(this->button2);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Dynamic";
 			this->Text = L"Dynamic";
 			this->Load += gcnew System::EventHandler(this, &Dynamic::Dynamic_Load);
@@ -667,13 +710,13 @@ namespace lambient {
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox4->ResumeLayout(false);
 			this->groupBox4->PerformLayout();
+			this->groupBox5->ResumeLayout(false);
+			this->groupBox5->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->timebox))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxb))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxg))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numberboxr))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rgbbox))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
-			this->groupBox5->ResumeLayout(false);
-			this->groupBox5->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -719,6 +762,11 @@ namespace lambient {
 	}
 	private: System::Void stopbutton_Click(System::Object^  sender, System::EventArgs^  e) {
 		//running = false;
+		this->groupBox3->Enabled = true;
+		this->groupBox4->Enabled = true;
+		this->button1->Enabled = true;
+		this->button2->Enabled = true;
+		this->startbutton->Enabled = true;
 		if (running == true)
 		{ 
 
@@ -759,6 +807,18 @@ namespace lambient {
 private: System::Void Dynamic_Load(System::Object^  sender, System::EventArgs^  e) {
 }
 private: System::Void radioButton1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (this->dbutton->Checked)
+	{
+		this->cbutton->Checked = false;
+		this->groupBox3->Enabled = true;
+		this->groupBox4->Enabled = false;
+	}
+	if (!this->dbutton->Checked)
+	{
+		this->cbutton->Checked = true;
+		this->groupBox4->Enabled = true;
+		this->groupBox3->Enabled = false;
+	}
 }
 private: System::Void label6_Click(System::Object^  sender, System::EventArgs^  e) {
 }
@@ -769,250 +829,483 @@ private: System::Void rgbbox_Click(System::Object^  sender, System::EventArgs^  
 private: System::Void numberboxr_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 }
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	compositionVector.push_back(gcnew Compfl(System::Convert::ToString(numberboxr->Value), System::Convert::ToString(numberboxg->Value), System::Convert::ToString(numberboxb->Value), System::Convert::ToString(timebox->Value)));
+
+}
+private: System::Void cbutton_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (this->cbutton->Checked)
+	{
+		this->dbutton->Checked = false;
+		this->groupBox4->Enabled = true;
+	}
+	if (!this->cbutton->Checked)
+	{
+		this->dbutton->Checked = true;
+		this->groupBox3->Enabled = true;
+	}
+}
+private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
+	//WCZYTYWANIE DANYCH DO WEKTORA KOMPOZYCJI
+	
+	
+	//temp= openFileDialog1->FileName;
+	//System::IO::File::OpenRead(temp);
+	//System::IO::File::ReadAllLines(temp);
+	//for(int i=0;i< System::IO::File::ReadAllLines(te)
+	
+
+}
+private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+}
+private: System::Void numberboxg_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void button5_Click_1(System::Object^  sender, System::EventArgs^  e) {
+	if (compositionVector.size() != 0)
+	{
+		compositionVector.pop_back();
+	}
+	else
+	{
+		MessageBox::Show("No colors stored","Oops!");
+	}
+}
+	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+		//c1.at(1) = L'x';
+
+		String^ cmpname = textBox1->Text;
+		if (cmpname->Length == 0)
+		{
+			MessageBox::Show("No name for file", "Oops!");
+		}
+		else
+		{
+			//cmpname = "C:\\Users\\Krzysiek\\source\\repos\\lambient\\Debug\\Comp"+cmpname + '.txt';
+			cmpname = "Comp\\ " + cmpname + ".txt";
+			//System::IO::File::Create(cmpname);
+			Compfl temp;
+			if (!System::IO::File::Exists(cmpname))
+			{
+				// Create a file to write to
+				System::IO::StreamWriter^ sw = System::IO::File::CreateText(cmpname);
+				try
+				{
+					//	System::IO::StreamWriter^ sw = System::IO::File::AppendText(cmpname);
+					for (int i = 0; i < compositionVector.size(); i++)
+					{
+						temp.b = compositionVector.at(i)->b;
+						temp.t = compositionVector.at(i)->t;
+						temp.r = compositionVector.at(i)->r;
+						temp.g = compositionVector.at(i)->g;
+
+						/*
+						System::IO::File::AppendAllText(cmpname, temp.r);
+						System::IO::File::AppendAllText(cmpname, temp.g);
+						System::IO::File::AppendAllText(cmpname, temp.b);
+						System::IO::File::AppendAllText(cmpname, temp.t);*/
+						MessageBox::Show("R:"+temp.r+ "\nG:"+ temp.g+ "\nB:"+ temp.b+"\nT:"+temp.t, "KOLOR");
+						sw->WriteLine(temp.r);
+						sw->WriteLine(temp.g);
+						sw->WriteLine(temp.b);
+						sw->WriteLine(temp.t);
+
+					}
+				}
+				finally
+				{
+				   if (sw)
+					  delete (IDisposable^)sw;
+				}
+			}
+			else
+			{
+				System::IO::StreamWriter^ sw = System::IO::File::AppendText(cmpname);
+				try
+				{
+					for (int i = 0; i < compositionVector.size(); i++)
+					{
+						temp.b = compositionVector.at(i)->b;
+						temp.t = compositionVector.at(i)->t;
+						temp.r = compositionVector.at(i)->r;
+						temp.g = compositionVector.at(i)->g;
+
+						/*
+						System::IO::File::AppendAllText(cmpname, temp.r);
+						System::IO::File::AppendAllText(cmpname, temp.g);
+						System::IO::File::AppendAllText(cmpname, temp.b);
+						System::IO::File::AppendAllText(cmpname, temp.t);*/
+						sw->WriteLine(temp.r);
+						sw->WriteLine(temp.g);
+						sw->WriteLine(temp.b);
+						sw->WriteLine(temp.t);
+
+					}
+				}
+				finally
+				{
+				   if (sw)
+					  delete (IDisposable^)sw;
+				}
+			}
+
+		}
+	}
+private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
+	openFileDialog1->Filter = "Text File|*.txt|Word Doc|*.doc";
+	openFileDialog1->InitialDirectory = "C:\\Users\\Krzysiek\\source\\repos\\lambient\\lambient\\Comp";
+	openFileDialog1->Title = "Open Text Files";
+	openFileDialog1->ShowDialog();
+	System::String^ showname = "";
+	System::String^ filename = openFileDialog1->FileName;
+	if(filename!="openFileDialog1")
+	{ 
+	for (int i = filename->Length - 5; i > 0; i--)//Usuwanie .txt z nazwy pliku
+	{
+		if (filename[i].Equals(92))
+		{
+			break;
+		}
+		showname = filename[i] + showname;
+	}
+	this->textBox2->Text = showname;
+	}
 }
 };
 	//W¹tek do przechwytywania danych
-	public ref class DynamicThread : public Dynamic
-	{
-		int mode, side, up;//1 to 3 boki,0 to 2 boki
-		Settings^ set1;
-		Kolor c1, c2, c3;
-		Kolor^ clr;
-		Kolor^ clr2;
-		Kolor^ clr3;
-	public:
-		Thread^ oThread2;
-	public: DynamicThread()
-	{
-	}
-	public: DynamicThread(Settings^ set1, Kolor^ &cl, Kolor^ &cl2, Kolor^ &cl3)
-	{
-		
-
-		
-		this->clr = cl2;
-		this->clr3 = cl3;
-		this->set1 = set1;
-		this->clr = cl;
-
-	}
-	public: DynamicThread(int mode, int side, int up, Settings^ set1, Kolor ^&cl)
-	{
-
-		
-		this->mode = mode;
-		this->side = side;
-		this->up = up;
-		this->set1 = set1;
-		this->clr = cl;
-		
-
-	}
-	public: DynamicThread(int mode, int side, int up, Settings^ set1)
-	{
-		this->mode = mode;
-		this->side = side;
-		this->up = up;
-		this->set1 = set1;
-		
-	}
-	public:
-		void ThreadProc()
+		public ref class DynamicThread : public Dynamic
 		{
-			COLORREF col1,col2;
-			
-			HWND hwnd;
-			HDC hdc;
-			hdc = GetDC(hwnd);
-			FindWindowA(NULL, "tr");
-			while (true)
+			int mode, side, up;//1 to 3 boki,0 to 2 boki
+			Settings^ set1;
+			Kolor c1, c2, c3;
+			Kolor^ clr;
+			Kolor^ clr2;
+			Kolor^ clr3;
+		public:
+			Thread^ oThread2;
+		public: DynamicThread()
+		{
+		}
+		public: DynamicThread(Settings^ set1, Kolor^ &cl, Kolor^ &cl2, Kolor^ &cl3)
+		{
+		
+
+		
+			this->clr = cl2;
+			this->clr3 = cl3;
+			this->set1 = set1;
+			this->clr = cl;
+
+		}
+		public: DynamicThread(int mode, int side, int up, Settings^ set1, Kolor ^&cl)
+		{
+
+		
+			this->mode = mode;
+			this->side = side;
+			this->up = up;
+			this->set1 = set1;
+			this->clr = cl;
+		
+
+		}
+		public: DynamicThread(int mode, int side, int up, Settings^ set1)
+		{
+			this->mode = mode;
+			this->side = side;
+			this->up = up;
+			this->set1 = set1;
+		
+		}
+		public:
+			void ThreadProc()
 			{
-				c1.r = c1.b = c1.g = c2.b = c2.r = c2.g = c3.r = c3.g = c3.b = 0;
+				COLORREF col1,col2;
+			
+				HWND hwnd;
+				HDC hdc;
+				hdc = GetDC(hwnd);
+				FindWindowA(NULL, "tr");
+				while (true)
+				{
+					c1.r = c1.b = c1.g = c2.b = c2.r = c2.g = c3.r = c3.g = c3.b = 0;
+					int s = 0;
+					//BOKI
+						for (int y=0; y < 1080; y +=(1080/2))
+						{
+							for (int x = 0; x < side; x += (side / 2))
+							{
+								col1 = GetPixel(hdc, x, y);
+								c1.r = c1.r + GetRValue(col1);
+								c1.g = c1.g + GetGValue(col1);
+								c1.b = c1.b + GetBValue(col1);
+							
+								col2 = GetPixel(hdc, 1919 - x, y);
+								c2.r = c2.r + GetRValue(col2);
+								c2.g = c2.g + GetGValue(col2);
+								c2.b = c2.b + GetBValue(col2);
+						
+								s++;
+							}
+						
+						}
+						c1.r = c1.r / s;
+						c1.g = c1.g / s;
+						c1.b = c1.b / s;
+						c2.r = c2.r / s;
+						c2.g = c2.g / s;
+						c2.b = c2.b / s;
+				
+					
+						s = 0;
+						if (mode == 1) //GÓRA i boki
+						{
+							//MessageBox::Show("running in full mode");
+						for(int x = 0; x < 1920; x +=(1920/2))
+						{
+							for (int y = 0; y < up; y += (up / 2))
+							{
+								col1 = GetPixel(hdc, x, y);
+								c3.r = c3.r + GetRValue(col1);
+								c3.g = c3.g + GetGValue(col1);
+								c3.b = c3.b + GetBValue(col1);
+								s++;
+							}
+						}
+
+						c3.r = c3.r / s;
+						c3.g = c3.g / s;
+						c3.b = c3.b / s;
+					
+
+						}
+					
+					
+						this->set1->usend(c1.r, c1.g, c1.b);
+						this->set1->usend(c2.r, c2.g, c2.b);
+						this->set1->usend(c3.r, c3.g, c3.b);
+				
+					
+
+				}
+		
+			}
+			void ThreadLeft()
+			{
+				COLORREF col1;
 				int s = 0;
-				//BOKI
-					for (int y=0; y < 1080; y +=(1080/2))
+				HWND hwnd;
+				HDC hdc;
+				hdc = GetDC(hwnd);
+				FindWindowA(NULL, "tr");
+				while (true)
+				{
+					for (int y = 0; y < 1080; y += (1080 / 5))
 					{
-						for (int x = 0; x < side; x += (side / 2))
+						for (int x = 0; x < side; x += (side / 5))
 						{
 							col1 = GetPixel(hdc, x, y);
 							c1.r = c1.r + GetRValue(col1);
 							c1.g = c1.g + GetGValue(col1);
 							c1.b = c1.b + GetBValue(col1);
-							
-							col2 = GetPixel(hdc, 1919 - x, y);
-							c2.r = c2.r + GetRValue(col2);
-							c2.g = c2.g + GetGValue(col2);
-							c2.b = c2.b + GetBValue(col2);
-						
 							s++;
 						}
-						
+
 					}
 					c1.r = c1.r / s;
 					c1.g = c1.g / s;
 					c1.b = c1.b / s;
+					s = 0;
+
+					this->clr->r = c1.r;
+					this->clr->b = c1.b;
+					this->clr->g = c1.b;
+					c1.r = c1.b = c1.g = 0;
+				}
+			}
+			void ThreadRight()
+			{
+				COLORREF col1;
+				int s = 0;
+				HWND hwnd;
+				HDC hdc;
+				hdc = GetDC(hwnd);
+				FindWindowA(NULL, "tr");
+				while (true)
+				{
+					for (int y = 0; y < 1080; y += (1080 / 5))
+					{
+						for (int x = 0; x < side; x += (side / 5))
+						{
+						
+
+							col1 = GetPixel(hdc, 1920 - x, y);
+							c2.r = c2.r + GetRValue(col1);
+							c2.g = c2.g + GetGValue(col1);
+							c2.b = c2.b + GetBValue(col1);
+							s++;
+						}
+
+					}
 					c2.r = c2.r / s;
 					c2.g = c2.g / s;
 					c2.b = c2.b / s;
-				
-					
 					s = 0;
-					if (mode == 1) //GÓRA i boki
+
+					this->clr->r = c2.r;
+					this->clr->b = c2.b;
+					this->clr->g = c2.b;
+					c2.r = c2.b = c2.g = 0;
+				}
+			}
+			void ThreadTop()
+			{
+				COLORREF col1;
+				int s = 0;
+				HWND hwnd;
+				HDC hdc;
+				hdc = GetDC(hwnd);
+				FindWindowA(NULL, "tr");
+				while (true)
+				{
+					for (int x = 0; x < 1920; x += (1920 / 5))
 					{
-						//MessageBox::Show("running in full mode");
-					for(int x = 0; x < 1920; x +=(1920/2))
-					{
-						for (int y = 0; y < up; y += (up / 2))
+						for (int y = 0; y < up; y += (up / 5))
 						{
 							col1 = GetPixel(hdc, x, y);
-							c3.r = c3.r + GetRValue(col1);
-							c3.g = c3.g + GetGValue(col1);
-							c3.b = c3.b + GetBValue(col1);
+							c1.r = c1.r + GetRValue(col1);
+							c1.g = c1.g + GetGValue(col1);
+							c1.b = c1.b + GetBValue(col1);
 							s++;
 						}
 					}
+					c1.r = c1.r / s;
+					c1.g = c1.g / s;
+					c1.b = c1.b / s;
+					s = 0;
 
-					c3.r = c3.r / s;
-					c3.g = c3.g / s;
-					c3.b = c3.b / s;
-					
+					this->clr->r = c1.r;
+					this->clr->b = c1.b;
+					this->clr->g = c1.b;
+					c1.r = c1.b = c1.g = 0;
+				}
+			}
+			void ThreadSend()
+			{
+				Sleep(1500);
 
-					}
-					
-					
-					this->set1->usend(c1.r, c1.g, c1.b);
+					this->c1.r = this->clr->r;
+					this->c1.g = this->clr->g;
+					this->c1.b = this->clr->b;
+					int i = this->clr->r;
+					int j = this->clr->g;
+					int k = this->clr->b;
+					MessageBox::Show("Sending R: " + i + "G: " + j + "B: " + k);
+					this->c2.r = this->clr2->r;
+					this->c2.g = this->clr2->g;
+					this->c2.b = this->clr2->b;
+
+					this->c3.r = this->clr3->r;
+					this->c3.g = this->clr3->g;
+					this->c3.b = this->clr3->b;
+
+					this->set1->usend(c1.g, c1.g, c1.b);
 					this->set1->usend(c2.r, c2.g, c2.b);
 					this->set1->usend(c3.r, c3.g, c3.b);
-				
+			
+			
+			}
+		};
+		public ref class ComboThread : public Dynamic
+		{
+			//W¹tek kompozycji
+			System::String^ filename;
+			Settings^ set1;
+			int run = 0;
+			public: ComboThread()
+			{
+				this->filename = "";
+				this->run = 0;
+			}
+			ComboThread(System::String^ name, Settings^ set1)
+			{
+				this->filename = name;
+				this->run = 0;
+				this->set1 = set1;
+			}
+			public: void readProc()
+			{
+				//Proces czytania
+				if (run == 0)
+				{
+					if (filename->Length != 0)
+					{
+						filename = "Comp\\" + filename + ".txt";
+						run++;
+					}
+					else
+					{
+					//
+					}
 					
-
-			}
-		
-		}
-		void ThreadLeft()
-		{
-			COLORREF col1;
-			int s = 0;
-			HWND hwnd;
-			HDC hdc;
-			hdc = GetDC(hwnd);
-			FindWindowA(NULL, "tr");
-			while (true)
-			{
-				for (int y = 0; y < 1080; y += (1080 / 5))
-				{
-					for (int x = 0; x < side; x += (side / 5))
-					{
-						col1 = GetPixel(hdc, x, y);
-						c1.r = c1.r + GetRValue(col1);
-						c1.g = c1.g + GetGValue(col1);
-						c1.b = c1.b + GetBValue(col1);
-						s++;
-					}
-
 				}
-				c1.r = c1.r / s;
-				c1.g = c1.g / s;
-				c1.b = c1.b / s;
-				s = 0;
-
-				this->clr->r = c1.r;
-				this->clr->b = c1.b;
-				this->clr->g = c1.b;
-				c1.r = c1.b = c1.g = 0;
-			}
-		}
-		void ThreadRight()
-		{
-			COLORREF col1;
-			int s = 0;
-			HWND hwnd;
-			HDC hdc;
-			hdc = GetDC(hwnd);
-			FindWindowA(NULL, "tr");
-			while (true)
-			{
-				for (int y = 0; y < 1080; y += (1080 / 5))
+				if (filename->Length != 0)
 				{
-					for (int x = 0; x < side; x += (side / 5))
+					System::String^ r;
+					System::String^ g;
+					System::String^ b;
+					System::String^ t;
+					int count = 0;
+					while (true)
 					{
-						
+						System::IO::StreamReader^ sr = System::IO::File::OpenText(filename);
+						try
+						{
+							String^ s = "";
+							int aa, ab, ac;
+							while (s = sr->ReadLine())
+							{
+								switch (count)
+								{
 
-						col1 = GetPixel(hdc, 1920 - x, y);
-						c2.r = c2.r + GetRValue(col1);
-						c2.g = c2.g + GetGValue(col1);
-						c2.b = c2.b + GetBValue(col1);
-						s++;
-					}
-
-				}
-				c2.r = c2.r / s;
-				c2.g = c2.g / s;
-				c2.b = c2.b / s;
-				s = 0;
-
-				this->clr->r = c2.r;
-				this->clr->b = c2.b;
-				this->clr->g = c2.b;
-				c2.r = c2.b = c2.g = 0;
-			}
-		}
-		void ThreadTop()
-		{
-			COLORREF col1;
-			int s = 0;
-			HWND hwnd;
-			HDC hdc;
-			hdc = GetDC(hwnd);
-			FindWindowA(NULL, "tr");
-			while (true)
-			{
-				for (int x = 0; x < 1920; x += (1920 / 5))
-				{
-					for (int y = 0; y < up; y += (up / 5))
-					{
-						col1 = GetPixel(hdc, x, y);
-						c1.r = c1.r + GetRValue(col1);
-						c1.g = c1.g + GetGValue(col1);
-						c1.b = c1.b + GetBValue(col1);
-						s++;
+								case 0:
+									r = s;
+									aa = Convert::ToInt16(r);
+									count++;
+									break;
+								case 1:
+									g = s;
+									ab = Convert::ToInt16(g);
+									count++;
+									break;
+								case 2:
+									b = s;
+									ac = Convert::ToInt16(b);
+									count++;
+									break;
+								case 3:
+									t = s;
+									count = 0;
+									int tm = Convert::ToInt16(t);
+									lambient::Dynamic::rgbbox->BackColor = Color::FromArgb(aa, ab, ac);
+									this->set1->usend(aa, ab, ac);
+									this->set1->usend(aa, ab, ac);
+									this->set1->usend(aa, ab, ac);
+									Sleep(tm);
+									break;
+								}
+							}
+						}
+						finally
+						{
+						   if (sr)
+							  delete (IDisposable^)sr;
+						}
 					}
 				}
-				c1.r = c1.r / s;
-				c1.g = c1.g / s;
-				c1.b = c1.b / s;
-				s = 0;
-
-				this->clr->r = c1.r;
-				this->clr->b = c1.b;
-				this->clr->g = c1.b;
-				c1.r = c1.b = c1.g = 0;
+				
 			}
-		}
-		void ThreadSend()
-		{
-			Sleep(1500);
-
-				this->c1.r = this->clr->r;
-				this->c1.g = this->clr->g;
-				this->c1.b = this->clr->b;
-				int i = this->clr->r;
-				int j = this->clr->g;
-				int k = this->clr->b;
-				MessageBox::Show("Sending R: " + i + "G: " + j + "B: " + k);
-				this->c2.r = this->clr2->r;
-				this->c2.g = this->clr2->g;
-				this->c2.b = this->clr2->b;
-
-				this->c3.r = this->clr3->r;
-				this->c3.g = this->clr3->g;
-				this->c3.b = this->clr3->b;
-
-				this->set1->usend(c1.g, c1.g, c1.b);
-				this->set1->usend(c2.r, c2.g, c2.b);
-				this->set1->usend(c3.r, c3.g, c3.b);
-			
-			
-		}
 	};
 }

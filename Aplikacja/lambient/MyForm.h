@@ -191,6 +191,7 @@ namespace lambient {
 			this->Controls->Add(this->version);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"MyForm";
 			this->Text = L"Ambient RGB";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);

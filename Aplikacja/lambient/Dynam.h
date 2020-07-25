@@ -525,6 +525,7 @@ namespace lambient {
 			this->Controls->Add(this->gbox);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->blit);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Dynam";
 			this->Text = L"Static Mode";
 			this->Load += gcnew System::EventHandler(this, &Dynam::Dynam_Load);
@@ -668,36 +669,33 @@ private: System::Void blendit_Click(System::Object^  sender, System::EventArgs^ 
 //Wysy³anie danych przez UART
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 	//String^ name = this->set2->serialPort1->PortName;
-	if (this->set2->serialPort1->IsOpen)
-	{	
-		/*
-		MessageBox::Show("SENDING");
-		std::string temp1 = std::to_string(statblue);
-		String^ bstring = gcnew String(temp1.c_str());
-		std::string temp2 = std::to_string(statred);
-		String^ rstring = gcnew String(temp2.c_str());
-		std::string temp3 = std::to_string(statgreen);
-		String^ gstring = gcnew String(temp3.c_str());
-		*/
+	
+	if (!System::IO::File::Exists("config.txt"))//Czy plik istnieje
+	{
+		MessageBox::Show("Please configure port and try again", "Configuration error");
+		//System::Windows::Forms::DialogResult dialogResult = MessageBox::Show("Configuration file not found! Do you want to configure settings now?", "Configuration Error", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+
+		//if((MessageBox::Show(this,"Configuration file found! Do you want to load it?",MessageBoxButtons::YesNo,MessageBoxIcon::Question)==DialogResult::No));
+	}
+	else
+	{
+		if(this->set2->serialPort1->IsOpen)
+		{
+			this->set2->serialPort1->Close();
+		}
+		this->set2->serialPort1->PortName=System::IO::File::ReadAllText("config.txt");
+		this->set2->serialPort1->Open();
+	
 		int a = statred;
 		int b = statgreen;
 		int c = statblue;
 		this->set2->usend(this->statred, this->statgreen, this->statblue);
 		this->set2->usend(this->statred, this->statgreen, this->statblue);
 		this->set2->usend(this->statred, this->statgreen, this->statblue);
-	//const 	int tsize = temp.size() + 1
-	//	unsigned char a[255];
-		//strcpy(a, temp.c_str());
-		//cli::array<unsigned char> ^ar1 = a;
-		//(gcnew String(c))->ToCharArray();
-		//this->set2->usend(c, c, c);
+
+		
 		
 	}
-	else
-	{
-		MessageBox::Show("Please configure port and try again");
-	}
-
 }
 private: System::Void numberboxr_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 	int r1 = (int)numberboxr->Value;
