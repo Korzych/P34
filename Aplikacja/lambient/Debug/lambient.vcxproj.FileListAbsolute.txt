@@ -1,0 +1,6 @@
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Debug\lambient.vcxprojAssemblyReference.cache
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Debug\lambient.Dynam.resources
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Debug\lambient.Dynamic.resources
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Debug\lambient.MyForm.resources
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Debug\lambient.Settings.resources
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Debug\lambient.vcxproj.GenerateResource.cache

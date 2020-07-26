@@ -100,7 +100,7 @@ namespace lambient {
 	private: System::Windows::Forms::Label^  label8;
 
 
-	private: System::Windows::Forms::Button^  button7;
+
 	private: System::Windows::Forms::GroupBox^  groupBox5;
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
 	private: System::Windows::Forms::TextBox^  textBox2;
@@ -120,7 +120,7 @@ namespace lambient {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Dynamic::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Dynamic::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->version = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -144,7 +144,6 @@ namespace lambient {
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
 			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
@@ -179,11 +178,12 @@ namespace lambient {
 			// 
 			// button1
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button1->Location = System::Drawing::Point(662, 9);
+			this->button1->Location = System::Drawing::Point(496, 7);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(92, 29);
+			this->button1->Size = System::Drawing::Size(69, 24);
 			this->button1->TabIndex = 18;
 			this->button1->Text = L"Settings";
 			this->button1->UseVisualStyleBackColor = true;
@@ -194,19 +194,21 @@ namespace lambient {
 			this->version->AutoSize = true;
 			this->version->BackColor = System::Drawing::Color::Transparent;
 			this->version->ForeColor = System::Drawing::Color::Cornsilk;
-			this->version->Location = System::Drawing::Point(15, 12);
+			this->version->Location = System::Drawing::Point(11, 10);
+			this->version->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->version->Name = L"version";
-			this->version->Size = System::Drawing::Size(49, 17);
+			this->version->Size = System::Drawing::Size(38, 13);
 			this->version->TabIndex = 17;
 			this->version->Text = L"V 0.97";
 			// 
 			// button2
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button2->Location = System::Drawing::Point(764, 9);
+			this->button2->Location = System::Drawing::Point(573, 7);
+			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(64, 29);
+			this->button2->Size = System::Drawing::Size(48, 24);
 			this->button2->TabIndex = 16;
 			this->button2->Text = L"Exit";
 			this->button2->UseVisualStyleBackColor = true;
@@ -216,9 +218,10 @@ namespace lambient {
 			// 
 			this->button4->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button4->Location = System::Drawing::Point(12, 476);
+			this->button4->Location = System::Drawing::Point(9, 387);
+			this->button4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(93, 29);
+			this->button4->Size = System::Drawing::Size(70, 24);
 			this->button4->TabIndex = 20;
 			this->button4->Text = L"Return";
 			this->button4->UseVisualStyleBackColor = true;
@@ -228,9 +231,10 @@ namespace lambient {
 			// 
 			this->startbutton->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->startbutton->Location = System::Drawing::Point(738, 471);
+			this->startbutton->Location = System::Drawing::Point(554, 383);
+			this->startbutton->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->startbutton->Name = L"startbutton";
-			this->startbutton->Size = System::Drawing::Size(90, 34);
+			this->startbutton->Size = System::Drawing::Size(68, 28);
 			this->startbutton->TabIndex = 19;
 			this->startbutton->Text = L"Start";
 			this->startbutton->UseVisualStyleBackColor = true;
@@ -238,22 +242,24 @@ namespace lambient {
 			// 
 			// edgerange
 			// 
-			this->edgerange->Location = System::Drawing::Point(109, 44);
+			this->edgerange->Location = System::Drawing::Point(82, 36);
+			this->edgerange->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->edgerange->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 900, 0, 0, 0 });
 			this->edgerange->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 50, 0, 0, 0 });
 			this->edgerange->Name = L"edgerange";
-			this->edgerange->Size = System::Drawing::Size(120, 22);
+			this->edgerange->Size = System::Drawing::Size(90, 20);
 			this->edgerange->TabIndex = 22;
 			this->edgerange->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 50, 0, 0, 0 });
 			this->edgerange->ValueChanged += gcnew System::EventHandler(this, &Dynamic::numericUpDown2_ValueChanged);
 			// 
 			// uprange
 			// 
-			this->uprange->Location = System::Drawing::Point(109, 86);
+			this->uprange->Location = System::Drawing::Point(82, 70);
+			this->uprange->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->uprange->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 900, 0, 0, 0 });
 			this->uprange->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 50, 0, 0, 0 });
 			this->uprange->Name = L"uprange";
-			this->uprange->Size = System::Drawing::Size(120, 22);
+			this->uprange->Size = System::Drawing::Size(90, 20);
 			this->uprange->TabIndex = 23;
 			this->uprange->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 50, 0, 0, 0 });
 			// 
@@ -265,9 +271,11 @@ namespace lambient {
 			this->groupBox1->Controls->Add(this->uprange);
 			this->groupBox1->Controls->Add(this->edgerange);
 			this->groupBox1->ForeColor = System::Drawing::Color::White;
-			this->groupBox1->Location = System::Drawing::Point(9, 260);
+			this->groupBox1->Location = System::Drawing::Point(7, 211);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(251, 140);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Size = System::Drawing::Size(188, 101);
 			this->groupBox1->TabIndex = 24;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Capture Range";
@@ -276,9 +284,10 @@ namespace lambient {
 			// 
 			this->label3->AutoSize = true;
 			this->label3->ForeColor = System::Drawing::Color::White;
-			this->label3->Location = System::Drawing::Point(11, 91);
+			this->label3->Location = System::Drawing::Point(8, 74);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(26, 17);
+			this->label3->Size = System::Drawing::Size(21, 13);
 			this->label3->TabIndex = 26;
 			this->label3->Text = L"Up";
 			// 
@@ -286,9 +295,10 @@ namespace lambient {
 			// 
 			this->label2->AutoSize = true;
 			this->label2->ForeColor = System::Drawing::Color::White;
-			this->label2->Location = System::Drawing::Point(11, 44);
+			this->label2->Location = System::Drawing::Point(8, 36);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(69, 17);
+			this->label2->Size = System::Drawing::Size(55, 13);
 			this->label2->TabIndex = 25;
 			this->label2->Text = L"Left/Right";
 			this->label2->Click += gcnew System::EventHandler(this, &Dynamic::label2_Click);
@@ -299,9 +309,11 @@ namespace lambient {
 			this->groupBox2->Controls->Add(this->rB2);
 			this->groupBox2->Controls->Add(this->rB1);
 			this->groupBox2->ForeColor = System::Drawing::Color::White;
-			this->groupBox2->Location = System::Drawing::Point(9, 127);
+			this->groupBox2->Location = System::Drawing::Point(7, 103);
+			this->groupBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(251, 127);
+			this->groupBox2->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox2->Size = System::Drawing::Size(188, 103);
 			this->groupBox2->TabIndex = 28;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Capture Zones";
@@ -310,9 +322,10 @@ namespace lambient {
 			// rB2
 			// 
 			this->rB2->AutoSize = true;
-			this->rB2->Location = System::Drawing::Point(35, 77);
+			this->rB2->Location = System::Drawing::Point(26, 63);
+			this->rB2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->rB2->Name = L"rB2";
-			this->rB2->Size = System::Drawing::Size(119, 21);
+			this->rB2->Size = System::Drawing::Size(97, 17);
 			this->rB2->TabIndex = 1;
 			this->rB2->Text = L"Left/Right/Top";
 			this->rB2->UseVisualStyleBackColor = true;
@@ -322,9 +335,10 @@ namespace lambient {
 			// 
 			this->rB1->AutoSize = true;
 			this->rB1->Checked = true;
-			this->rB1->Location = System::Drawing::Point(35, 38);
+			this->rB1->Location = System::Drawing::Point(26, 31);
+			this->rB1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->rB1->Name = L"rB1";
-			this->rB1->Size = System::Drawing::Size(90, 21);
+			this->rB1->Size = System::Drawing::Size(73, 17);
 			this->rB1->TabIndex = 0;
 			this->rB1->TabStop = true;
 			this->rB1->Text = L"Left/Right";
@@ -336,9 +350,10 @@ namespace lambient {
 			this->modebox->BackColor = System::Drawing::Color::Transparent;
 			this->modebox->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"modebox.BackgroundImage")));
 			this->modebox->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->modebox->Location = System::Drawing::Point(44, 21);
+			this->modebox->Location = System::Drawing::Point(33, 17);
+			this->modebox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->modebox->Name = L"modebox";
-			this->modebox->Size = System::Drawing::Size(180, 100);
+			this->modebox->Size = System::Drawing::Size(135, 81);
 			this->modebox->TabIndex = 29;
 			this->modebox->TabStop = false;
 			// 
@@ -347,9 +362,10 @@ namespace lambient {
 			this->modeBox2->BackColor = System::Drawing::Color::Transparent;
 			this->modeBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"modeBox2.BackgroundImage")));
 			this->modeBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->modeBox2->Location = System::Drawing::Point(44, 21);
+			this->modeBox2->Location = System::Drawing::Point(33, 17);
+			this->modeBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->modeBox2->Name = L"modeBox2";
-			this->modeBox2->Size = System::Drawing::Size(180, 100);
+			this->modeBox2->Size = System::Drawing::Size(135, 81);
 			this->modeBox2->TabIndex = 30;
 			this->modeBox2->TabStop = false;
 			this->modeBox2->Visible = false;
@@ -359,9 +375,10 @@ namespace lambient {
 			// 
 			this->stopbutton->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->stopbutton->Location = System::Drawing::Point(642, 471);
+			this->stopbutton->Location = System::Drawing::Point(482, 383);
+			this->stopbutton->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->stopbutton->Name = L"stopbutton";
-			this->stopbutton->Size = System::Drawing::Size(90, 34);
+			this->stopbutton->Size = System::Drawing::Size(68, 28);
 			this->stopbutton->TabIndex = 31;
 			this->stopbutton->Text = L"Stop";
 			this->stopbutton->UseVisualStyleBackColor = true;
@@ -372,9 +389,10 @@ namespace lambient {
 			this->dbutton->AutoSize = true;
 			this->dbutton->BackColor = System::Drawing::Color::Transparent;
 			this->dbutton->Checked = true;
-			this->dbutton->Location = System::Drawing::Point(15, 50);
+			this->dbutton->Location = System::Drawing::Point(11, 41);
+			this->dbutton->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dbutton->Name = L"dbutton";
-			this->dbutton->Size = System::Drawing::Size(17, 16);
+			this->dbutton->Size = System::Drawing::Size(14, 13);
 			this->dbutton->TabIndex = 32;
 			this->dbutton->TabStop = true;
 			this->dbutton->UseVisualStyleBackColor = false;
@@ -388,9 +406,11 @@ namespace lambient {
 			this->groupBox3->Controls->Add(this->groupBox2);
 			this->groupBox3->Controls->Add(this->modebox);
 			this->groupBox3->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->groupBox3->Location = System::Drawing::Point(36, 50);
+			this->groupBox3->Location = System::Drawing::Point(27, 41);
+			this->groupBox3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(271, 401);
+			this->groupBox3->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox3->Size = System::Drawing::Size(203, 326);
 			this->groupBox3->TabIndex = 33;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Dynamic Mode";
@@ -399,9 +419,10 @@ namespace lambient {
 			// 
 			this->cbutton->AutoSize = true;
 			this->cbutton->BackColor = System::Drawing::Color::Transparent;
-			this->cbutton->Location = System::Drawing::Point(376, 50);
+			this->cbutton->Location = System::Drawing::Point(282, 41);
+			this->cbutton->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->cbutton->Name = L"cbutton";
-			this->cbutton->Size = System::Drawing::Size(17, 16);
+			this->cbutton->Size = System::Drawing::Size(14, 13);
 			this->cbutton->TabIndex = 34;
 			this->cbutton->UseVisualStyleBackColor = false;
 			this->cbutton->CheckedChanged += gcnew System::EventHandler(this, &Dynamic::cbutton_CheckedChanged);
@@ -426,9 +447,11 @@ namespace lambient {
 			this->groupBox4->Controls->Add(this->label5);
 			this->groupBox4->Enabled = false;
 			this->groupBox4->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->groupBox4->Location = System::Drawing::Point(399, 50);
+			this->groupBox4->Location = System::Drawing::Point(299, 41);
+			this->groupBox4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox4->Name = L"groupBox4";
-			this->groupBox4->Size = System::Drawing::Size(412, 400);
+			this->groupBox4->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox4->Size = System::Drawing::Size(309, 325);
 			this->groupBox4->TabIndex = 35;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Composition Mode";
@@ -438,12 +461,13 @@ namespace lambient {
 			this->groupBox5->BackColor = System::Drawing::Color::Transparent;
 			this->groupBox5->Controls->Add(this->button8);
 			this->groupBox5->Controls->Add(this->textBox2);
-			this->groupBox5->Controls->Add(this->button7);
 			this->groupBox5->Controls->Add(this->label8);
 			this->groupBox5->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->groupBox5->Location = System::Drawing::Point(196, 30);
+			this->groupBox5->Location = System::Drawing::Point(147, 37);
+			this->groupBox5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox5->Name = L"groupBox5";
-			this->groupBox5->Size = System::Drawing::Size(210, 145);
+			this->groupBox5->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox5->Size = System::Drawing::Size(158, 72);
 			this->groupBox5->TabIndex = 36;
 			this->groupBox5->TabStop = false;
 			this->groupBox5->Text = L"Load Composition";
@@ -457,9 +481,10 @@ namespace lambient {
 			this->button8->Font = (gcnew System::Drawing::Font(L"Impact", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button8->ForeColor = System::Drawing::Color::Black;
-			this->button8->Location = System::Drawing::Point(164, 51);
+			this->button8->Location = System::Drawing::Point(129, 38);
+			this->button8->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(36, 36);
+			this->button8->Size = System::Drawing::Size(25, 25);
 			this->button8->TabIndex = 38;
 			this->button8->UseVisualStyleBackColor = false;
 			this->button8->Click += gcnew System::EventHandler(this, &Dynamic::button8_Click);
@@ -468,25 +493,12 @@ namespace lambient {
 			// 
 			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->textBox2->Location = System::Drawing::Point(15, 56);
+			this->textBox2->Location = System::Drawing::Point(12, 37);
+			this->textBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(147, 30);
+			this->textBox2->Size = System::Drawing::Size(111, 26);
 			this->textBox2->TabIndex = 37;
 			this->textBox2->TextChanged += gcnew System::EventHandler(this, &Dynamic::textBox2_TextChanged);
-			// 
-			// button7
-			// 
-			this->button7->BackColor = System::Drawing::SystemColors::ActiveBorder;
-			this->button7->Font = (gcnew System::Drawing::Font(L"Impact", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->button7->ForeColor = System::Drawing::Color::Black;
-			this->button7->Location = System::Drawing::Point(16, 95);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(147, 38);
-			this->button7->TabIndex = 33;
-			this->button7->Text = L"Load ";
-			this->button7->UseVisualStyleBackColor = false;
-			this->button7->Click += gcnew System::EventHandler(this, &Dynamic::button7_Click);
 			// 
 			// label8
 			// 
@@ -495,9 +507,10 @@ namespace lambient {
 			this->label8->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->label8->ForeColor = System::Drawing::Color::White;
-			this->label8->Location = System::Drawing::Point(11, 25);
+			this->label8->Location = System::Drawing::Point(8, 15);
+			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(163, 25);
+			this->label8->Size = System::Drawing::Size(131, 20);
 			this->label8->TabIndex = 32;
 			this->label8->Text = L"Composition Name";
 			// 
@@ -507,9 +520,10 @@ namespace lambient {
 			this->button6->Font = (gcnew System::Drawing::Font(L"Impact", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button6->ForeColor = System::Drawing::Color::Black;
-			this->button6->Location = System::Drawing::Point(116, 346);
+			this->button6->Location = System::Drawing::Point(87, 281);
+			this->button6->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(163, 38);
+			this->button6->Size = System::Drawing::Size(122, 31);
 			this->button6->TabIndex = 30;
 			this->button6->Text = L"Save Composition ";
 			this->button6->UseVisualStyleBackColor = false;
@@ -521,9 +535,10 @@ namespace lambient {
 			this->button5->Font = (gcnew System::Drawing::Font(L"Impact", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button5->ForeColor = System::Drawing::Color::Black;
-			this->button5->Location = System::Drawing::Point(116, 304);
+			this->button5->Location = System::Drawing::Point(87, 247);
+			this->button5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(163, 38);
+			this->button5->Size = System::Drawing::Size(122, 31);
 			this->button5->TabIndex = 29;
 			this->button5->Text = L"Delete Last Color";
 			this->button5->UseVisualStyleBackColor = false;
@@ -535,9 +550,10 @@ namespace lambient {
 			this->button3->Font = (gcnew System::Drawing::Font(L"Impact", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button3->ForeColor = System::Drawing::Color::Black;
-			this->button3->Location = System::Drawing::Point(116, 260);
+			this->button3->Location = System::Drawing::Point(87, 211);
+			this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(163, 38);
+			this->button3->Size = System::Drawing::Size(122, 31);
 			this->button3->TabIndex = 28;
 			this->button3->Text = L"Add Color";
 			this->button3->UseVisualStyleBackColor = false;
@@ -550,9 +566,10 @@ namespace lambient {
 			this->label7->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->label7->ForeColor = System::Drawing::Color::White;
-			this->label7->Location = System::Drawing::Point(27, 30);
+			this->label7->Location = System::Drawing::Point(20, 24);
+			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(163, 25);
+			this->label7->Size = System::Drawing::Size(131, 20);
 			this->label7->TabIndex = 27;
 			this->label7->Text = L"Composition Name";
 			// 
@@ -560,23 +577,25 @@ namespace lambient {
 			// 
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->textBox1->Location = System::Drawing::Point(32, 58);
+			this->textBox1->Location = System::Drawing::Point(24, 47);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(153, 27);
+			this->textBox1->Size = System::Drawing::Size(116, 23);
 			this->textBox1->TabIndex = 26;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Dynamic::textBox1_TextChanged);
 			// 
 			// timebox
 			// 
 			this->timebox->BackColor = System::Drawing::Color::White;
-			this->timebox->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->timebox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->timebox->Increment = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100, 0, 0, 0 });
-			this->timebox->Location = System::Drawing::Point(103, 211);
+			this->timebox->Location = System::Drawing::Point(77, 171);
+			this->timebox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->timebox->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10000, 0, 0, 0 });
 			this->timebox->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 500, 0, 0, 0 });
 			this->timebox->Name = L"timebox";
-			this->timebox->Size = System::Drawing::Size(82, 30);
+			this->timebox->Size = System::Drawing::Size(62, 26);
 			this->timebox->TabIndex = 25;
 			this->timebox->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 500, 0, 0, 0 });
 			this->timebox->ValueChanged += gcnew System::EventHandler(this, &Dynamic::numericUpDown1_ValueChanged);
@@ -588,51 +607,56 @@ namespace lambient {
 			this->label6->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->label6->ForeColor = System::Drawing::Color::White;
-			this->label6->Location = System::Drawing::Point(6, 216);
+			this->label6->Location = System::Drawing::Point(4, 176);
+			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(91, 25);
+			this->label6->Size = System::Drawing::Size(73, 20);
 			this->label6->TabIndex = 24;
 			this->label6->Text = L"Time [ms]";
 			this->label6->Click += gcnew System::EventHandler(this, &Dynamic::label6_Click);
 			// 
 			// numberboxb
 			// 
-			this->numberboxb->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->numberboxb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->numberboxb->Location = System::Drawing::Point(65, 170);
+			this->numberboxb->Location = System::Drawing::Point(49, 138);
+			this->numberboxb->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->numberboxb->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 255, 0, 0, 0 });
 			this->numberboxb->Name = L"numberboxb";
-			this->numberboxb->Size = System::Drawing::Size(120, 30);
+			this->numberboxb->Size = System::Drawing::Size(90, 26);
 			this->numberboxb->TabIndex = 23;
 			// 
 			// numberboxg
 			// 
-			this->numberboxg->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->numberboxg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->numberboxg->Location = System::Drawing::Point(65, 130);
+			this->numberboxg->Location = System::Drawing::Point(49, 106);
+			this->numberboxg->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->numberboxg->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 255, 0, 0, 0 });
 			this->numberboxg->Name = L"numberboxg";
-			this->numberboxg->Size = System::Drawing::Size(120, 30);
+			this->numberboxg->Size = System::Drawing::Size(90, 26);
 			this->numberboxg->TabIndex = 22;
 			this->numberboxg->ValueChanged += gcnew System::EventHandler(this, &Dynamic::numberboxg_ValueChanged);
 			// 
 			// numberboxr
 			// 
-			this->numberboxr->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->numberboxr->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->numberboxr->Location = System::Drawing::Point(65, 90);
+			this->numberboxr->Location = System::Drawing::Point(49, 73);
+			this->numberboxr->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->numberboxr->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 255, 0, 0, 0 });
 			this->numberboxr->Name = L"numberboxr";
-			this->numberboxr->Size = System::Drawing::Size(120, 30);
+			this->numberboxr->Size = System::Drawing::Size(90, 26);
 			this->numberboxr->TabIndex = 20;
 			this->numberboxr->ValueChanged += gcnew System::EventHandler(this, &Dynamic::numberboxr_ValueChanged);
 			// 
 			// rgbbox
 			// 
-			this->rgbbox->BackColor = System::Drawing::Color::Black;
-			this->rgbbox->Location = System::Drawing::Point(211, 183);
+			this->rgbbox->BackColor = System::Drawing::Color::Transparent;
+			this->rgbbox->Location = System::Drawing::Point(158, 149);
+			this->rgbbox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->rgbbox->Name = L"rgbbox";
-			this->rgbbox->Size = System::Drawing::Size(188, 71);
+			this->rgbbox->Size = System::Drawing::Size(141, 58);
 			this->rgbbox->TabIndex = 21;
 			this->rgbbox->TabStop = false;
 			this->rgbbox->Click += gcnew System::EventHandler(this, &Dynamic::rgbbox_Click);
@@ -644,9 +668,10 @@ namespace lambient {
 				static_cast<System::Byte>(238)));
 			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->label1->Location = System::Drawing::Point(33, 170);
+			this->label1->Location = System::Drawing::Point(25, 138);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(26, 29);
+			this->label1->Size = System::Drawing::Size(21, 23);
 			this->label1->TabIndex = 19;
 			this->label1->Text = L"B";
 			// 
@@ -656,9 +681,10 @@ namespace lambient {
 			this->label4->Font = (gcnew System::Drawing::Font(L"Impact", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->label4->ForeColor = System::Drawing::Color::Lime;
-			this->label4->Location = System::Drawing::Point(33, 130);
+			this->label4->Location = System::Drawing::Point(25, 106);
+			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(26, 29);
+			this->label4->Size = System::Drawing::Size(20, 23);
 			this->label4->TabIndex = 18;
 			this->label4->Text = L"G";
 			// 
@@ -668,9 +694,10 @@ namespace lambient {
 			this->label5->Font = (gcnew System::Drawing::Font(L"Impact", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->label5->ForeColor = System::Drawing::Color::Red;
-			this->label5->Location = System::Drawing::Point(33, 91);
+			this->label5->Location = System::Drawing::Point(25, 74);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(26, 29);
+			this->label5->Size = System::Drawing::Size(20, 23);
 			this->label5->TabIndex = 17;
 			this->label5->Text = L"R";
 			// 
@@ -680,11 +707,11 @@ namespace lambient {
 			// 
 			// Dynamic
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(837, 508);
+			this->ClientSize = System::Drawing::Size(628, 413);
 			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->cbutton);
 			this->Controls->Add(this->groupBox3);
@@ -696,6 +723,7 @@ namespace lambient {
 			this->Controls->Add(this->version);
 			this->Controls->Add(this->button2);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"Dynamic";
 			this->Text = L"Dynamic";
 			this->Load += gcnew System::EventHandler(this, &Dynamic::Dynamic_Load);
@@ -787,6 +815,9 @@ namespace lambient {
 		button4->Enabled = true;
 		
 		this->oThread1->Abort();
+		this->set1->usend(0, 0, 0);
+		this->set1->usend(0, 0, 0);
+		this->set1->usend(0, 0, 0);
 		//this->oThread2->Abort();
 		//this->oThread3->Abort();
 		/*
@@ -882,7 +913,7 @@ private: System::Void button5_Click_1(System::Object^  sender, System::EventArgs
 		else
 		{
 			//cmpname = "C:\\Users\\Krzysiek\\source\\repos\\lambient\\Debug\\Comp"+cmpname + '.txt';
-			cmpname = "Comp\\ " + cmpname + ".txt";
+			cmpname = "Comp\\" + cmpname + ".txt";
 			//System::IO::File::Create(cmpname);
 			Compfl temp;
 			if (!System::IO::File::Exists(cmpname))
@@ -904,13 +935,14 @@ private: System::Void button5_Click_1(System::Object^  sender, System::EventArgs
 						System::IO::File::AppendAllText(cmpname, temp.g);
 						System::IO::File::AppendAllText(cmpname, temp.b);
 						System::IO::File::AppendAllText(cmpname, temp.t);*/
-						MessageBox::Show("R:"+temp.r+ "\nG:"+ temp.g+ "\nB:"+ temp.b+"\nT:"+temp.t, "KOLOR");
+						
 						sw->WriteLine(temp.r);
 						sw->WriteLine(temp.g);
 						sw->WriteLine(temp.b);
 						sw->WriteLine(temp.t);
 
 					}
+					MessageBox::Show("Composition saved.", "SUCCESS");
 				}
 				finally
 				{
@@ -955,7 +987,7 @@ private: System::Void textBox1_TextChanged(System::Object^  sender, System::Even
 }
 private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
 	openFileDialog1->Filter = "Text File|*.txt|Word Doc|*.doc";
-	openFileDialog1->InitialDirectory = "C:\\Users\\Krzysiek\\source\\repos\\lambient\\lambient\\Comp";
+	openFileDialog1->InitialDirectory = "%HOMEPATH%\\Desktop\\AmbientRGB\\Comp";
 	openFileDialog1->Title = "Open Text Files";
 	openFileDialog1->ShowDialog();
 	System::String^ showname = "";

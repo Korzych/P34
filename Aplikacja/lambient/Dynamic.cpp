@@ -73,6 +73,7 @@ namespace lambient {
 				if (running != true)
 				{	
 					//Tryb combo
+					running = true;
 					ComboThread^o2 = gcnew ComboThread(this->textBox2->Text,this->set1);
 					oThread1 = gcnew Thread(gcnew ThreadStart(o2, &ComboThread::readProc));
 					oThread1->Start();

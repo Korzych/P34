@@ -1,24 +1,24 @@
 ﻿  Dynamic.cpp
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(992): warning C4677: 'DynamicThread': signature of non-private member contains assembly private type 'Kolor'
-  c:\users\krzysiek\source\repos\lambient\lambient\kolor.h(2): note: see declaration of 'Kolor'
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(1003): warning C4677: 'DynamicThread': signature of non-private member contains assembly private type 'Kolor'
-  c:\users\krzysiek\source\repos\lambient\lambient\kolor.h(2): note: see declaration of 'Kolor'
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1023,3): warning C4677: „DynamicThread”: Sygnatura nieprywatnej składowej zawiera prywatny typ zestawu „Kolor”
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Kolor.h(2): message : zobacz deklarację „Kolor”
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1034,3): warning C4677: „DynamicThread”: Sygnatura nieprywatnej składowej zawiera prywatny typ zestawu „Kolor”
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Kolor.h(2): message : zobacz deklarację „Kolor”
   MyForm.cpp
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(992): warning C4677: 'DynamicThread': signature of non-private member contains assembly private type 'Kolor'
-  c:\users\krzysiek\source\repos\lambient\lambient\kolor.h(2): note: see declaration of 'Kolor'
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(1003): warning C4677: 'DynamicThread': signature of non-private member contains assembly private type 'Kolor'
-  c:\users\krzysiek\source\repos\lambient\lambient\kolor.h(2): note: see declaration of 'Kolor'
-  Generating Code...
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(1030): warning C4700: uninitialized local variable 'hwnd' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(1102): warning C4700: uninitialized local variable 'hwnd' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(1135): warning C4700: uninitialized local variable 'hwnd' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(1170): warning C4700: uninitialized local variable 'hwnd' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(569): warning C4700: uninitialized local variable 'sumr' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(570): warning C4700: uninitialized local variable 'sumg' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynam.h(571): warning C4700: uninitialized local variable 'sumb' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(1030): warning C4700: uninitialized local variable 'hwnd' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(1102): warning C4700: uninitialized local variable 'hwnd' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(1135): warning C4700: uninitialized local variable 'hwnd' used
-c:\users\krzysiek\source\repos\lambient\lambient\dynamic.h(1170): warning C4700: uninitialized local variable 'hwnd' used
-  Dynam.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  lambient.vcxproj -> C:\Users\Krzysiek\source\repos\lambient\Debug\lambient.exe
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1023,3): warning C4677: „DynamicThread”: Sygnatura nieprywatnej składowej zawiera prywatny typ zestawu „Kolor”
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Kolor.h(2): message : zobacz deklarację „Kolor”
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1034,3): warning C4677: „DynamicThread”: Sygnatura nieprywatnej składowej zawiera prywatny typ zestawu „Kolor”
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Kolor.h(2): message : zobacz deklarację „Kolor”
+  Generowanie kodu...
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1061): warning C4700: użycie niezainicjowanej zmiennej lokalnej "hwnd"
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1133): warning C4700: użycie niezainicjowanej zmiennej lokalnej "hwnd"
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1166): warning C4700: użycie niezainicjowanej zmiennej lokalnej "hwnd"
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1201): warning C4700: użycie niezainicjowanej zmiennej lokalnej "hwnd"
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynam.h(569): warning C4700: użycie niezainicjowanej zmiennej lokalnej "sumr"
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynam.h(570): warning C4700: użycie niezainicjowanej zmiennej lokalnej "sumg"
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynam.h(571): warning C4700: użycie niezainicjowanej zmiennej lokalnej "sumb"
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1061): warning C4700: użycie niezainicjowanej zmiennej lokalnej "hwnd"
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1133): warning C4700: użycie niezainicjowanej zmiennej lokalnej "hwnd"
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1166): warning C4700: użycie niezainicjowanej zmiennej lokalnej "hwnd"
+C:\Users\KonradT\IdeaProjects\P34\Aplikacja\lambient\Dynamic.h(1201): warning C4700: użycie niezainicjowanej zmiennej lokalnej "hwnd"
+  Dynam.obj : napotkano moduł MSIL; konsolidowanie przyrostowe jest wyłączone dla modułów MSIL; zostanie wykonana pełna konsolidacja
+  lambient.vcxproj -> C:\Users\KonradT\IdeaProjects\P34\Aplikacja\Debug\lambient.exe
