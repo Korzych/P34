@@ -439,7 +439,7 @@ namespace lambient {
 			// 
 			// button2
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button2->Location = System::Drawing::Point(761, 9);
 			this->button2->Name = L"button2";
@@ -453,10 +453,10 @@ namespace lambient {
 			// 
 			this->button4->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button4->Location = System::Drawing::Point(3, 476);
+			this->button4->Location = System::Drawing::Point(3, 471);
 			this->button4->Margin = System::Windows::Forms::Padding(20);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(93, 29);
+			this->button4->Size = System::Drawing::Size(90, 34);
 			this->button4->TabIndex = 11;
 			this->button4->Text = L"Return";
 			this->button4->UseVisualStyleBackColor = true;
@@ -471,7 +471,7 @@ namespace lambient {
 			this->version->Name = L"version";
 			this->version->Size = System::Drawing::Size(49, 17);
 			this->version->TabIndex = 12;
-			this->version->Text = L"V 0.97";
+			this->version->Text = L"V 1.00";
 			this->version->Click += gcnew System::EventHandler(this, &Dynam::version_Click);
 			// 
 			// radioButton1
@@ -500,7 +500,7 @@ namespace lambient {
 			// 
 			// button1
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button1->Location = System::Drawing::Point(659, 9);
 			this->button1->Name = L"button1";
@@ -668,14 +668,10 @@ private: System::Void blendit_Click(System::Object^  sender, System::EventArgs^ 
 
 //Wysy³anie danych przez UART
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-	//String^ name = this->set2->serialPort1->PortName;
 	
 	if (!System::IO::File::Exists("config.txt"))//Czy plik istnieje
 	{
 		MessageBox::Show("Please configure port and try again", "Configuration error");
-		//System::Windows::Forms::DialogResult dialogResult = MessageBox::Show("Configuration file not found! Do you want to configure settings now?", "Configuration Error", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-
-		//if((MessageBox::Show(this,"Configuration file found! Do you want to load it?",MessageBoxButtons::YesNo,MessageBoxIcon::Question)==DialogResult::No));
 	}
 	else
 	{
@@ -693,8 +689,6 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 		this->set2->usend(this->statred, this->statgreen, this->statblue);
 		this->set2->usend(this->statred, this->statgreen, this->statblue);
 
-		
-		
 	}
 }
 private: System::Void numberboxr_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -746,7 +740,6 @@ private: System::Void radioButton1_CheckedChanged(System::Object^  sender, Syste
 	{
 		this->blit->Enabled = 1;
 		this->gbox->Enabled = 0;
-		//this->groupBox2_Enter.Enabled = 0;
 	}
 	else
 	{
@@ -783,7 +776,6 @@ private: System::Void button6_Click(System::Object^  sender, System::EventArgs^ 
 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 	set2->ShowDialog();
-
 }
 
 private: System::Void version_Click(System::Object^  sender, System::EventArgs^  e) {

@@ -13,7 +13,6 @@ namespace lambient {
 	using namespace System::Drawing;
 	using namespace System::IO::Ports;
 	using System::Runtime::InteropServices::Marshal;
-	//String getPort();
 	static std::string toStandardString(System::String^ string)
 
 	{
@@ -49,14 +48,11 @@ namespace lambient {
 				delete components;
 			}
 		}
-	//private: System::IO::Ports::SerialPort^  _serialPort;
 	private: System::Windows::Forms::ComboBox^  pselect;
 	protected:
 
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::Label^  label1;
-
-
 
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button1;
@@ -67,17 +63,9 @@ namespace lambient {
 	public: System::IO::Ports::SerialPort^  serialPort1;
 	private: System::Windows::Forms::Button^  button3;
 
-
-
 	public:
 	private: System::ComponentModel::IContainer^  components;
-			 /*
-	public: void usend(System::String^ br, System::String^ bg,System::String^ bb)
-	{
-		this->serialPort1->Write(br);
-		this->serialPort1->Write(bg);
-		this->serialPort1->Write(bb);
-	}*/
+	
 	public: void usend(int r, int g, int b)
 	{
 		uint8_t x = (uint8_t)r;
@@ -89,21 +77,6 @@ namespace lambient {
 			this->serialPort1->Open();
 		}
 		this->serialPort1->Write(a1, 0, a1->Length);
-	//	this->serialPort1->Write(a2, 0, a2->Length);
-	//this->serialPort1->Write(a3, 0, a3->Length);
-		/*
-		byte a1 = (byte)a;
-		byte a2 = (byte)b;
-		byte a3 = (byte)c;
-		cli::array<byte>
-		this->serialPort1->Write(a1, 0, 1);
-		//void Write(cli::array <System::Byte> ^ buffer, int offset, int count);
-
-		
-		this->serialPort1->Write(br);
-		this->serialPort1->Write(bg);
-		this->serialPort1->Write(bb);
-		*/
 	}
 	protected:
 
@@ -222,7 +195,7 @@ namespace lambient {
 			this->version->Name = L"version";
 			this->version->Size = System::Drawing::Size(49, 17);
 			this->version->TabIndex = 13;
-			this->version->Text = L"V 0.97";
+			this->version->Text = L"V 1.00";
 			// 
 			// button3
 			// 
@@ -286,7 +259,6 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 				this->serialPort1->BaudRate = 9600;
 				this->serialPort1->Open();
 				this->progressBar1->Value = 100;
-				//TEST
 				System::IO::File::WriteAllText("config.txt", this->serialPort1->PortName);
 			
 				MessageBox::Show("Configuration Finished");

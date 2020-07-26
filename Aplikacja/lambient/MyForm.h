@@ -98,9 +98,9 @@ namespace lambient {
 			this->groupBox1->Controls->Add(this->radioButton1);
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Haettenschweiler", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->groupBox1->Location = System::Drawing::Point(154, 263);
+			this->groupBox1->Location = System::Drawing::Point(315, 263);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(528, 100);
+			this->groupBox1->Size = System::Drawing::Size(209, 134);
 			this->groupBox1->TabIndex = 5;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Select Mode";
@@ -109,24 +109,24 @@ namespace lambient {
 			// radioButton2
 			// 
 			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(360, 40);
+			this->radioButton2->Location = System::Drawing::Point(46, 74);
 			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(157, 33);
+			this->radioButton2->Size = System::Drawing::Size(111, 33);
 			this->radioButton2->TabIndex = 5;
 			this->radioButton2->TabStop = true;
-			this->radioButton2->Text = L"Dynamic Mode";
+			this->radioButton2->Text = L"Dynamic ";
 			this->radioButton2->UseVisualStyleBackColor = true;
 			this->radioButton2->CheckedChanged += gcnew System::EventHandler(this, &MyForm::radioButton2_CheckedChanged);
 			// 
 			// radioButton1
 			// 
 			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(42, 40);
+			this->radioButton1->Location = System::Drawing::Point(46, 35);
 			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(137, 33);
+			this->radioButton1->Size = System::Drawing::Size(86, 33);
 			this->radioButton1->TabIndex = 4;
 			this->radioButton1->TabStop = true;
-			this->radioButton1->Text = L"Static Mode";
+			this->radioButton1->Text = L"Static";
 			this->radioButton1->UseVisualStyleBackColor = true;
 			this->radioButton1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::radioButton1_CheckedChanged);
 			// 
@@ -136,7 +136,7 @@ namespace lambient {
 			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Haettenschweiler", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button1->Location = System::Drawing::Point(323, 440);
+			this->button1->Location = System::Drawing::Point(350, 448);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(147, 48);
 			this->button1->TabIndex = 7;
@@ -153,18 +153,18 @@ namespace lambient {
 			this->version->Name = L"version";
 			this->version->Size = System::Drawing::Size(49, 17);
 			this->version->TabIndex = 8;
-			this->version->Text = L"V 0.97";
+			this->version->Text = L"V 1.00";
 			this->version->Click += gcnew System::EventHandler(this, &MyForm::version_Click);
 			// 
 			// button2
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button2->Location = System::Drawing::Point(757, 9);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(71, 29);
 			this->button2->TabIndex = 9;
-			this->button2->Text = L"EXIT ";
+			this->button2->Text = L"Exit ";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 

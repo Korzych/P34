@@ -16,7 +16,7 @@ namespace lambient {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::Threading;
-	
+
 
 	/// <summary>
 	/// Summary for Dynamic
@@ -45,29 +45,21 @@ namespace lambient {
 	private: System::Windows::Forms::Button^  startbutton;
 	private: System::Windows::Forms::NumericUpDown^  edgerange;
 
-			 ////////////////TEST////////////////////TEST
-			 //DynamicThread^ o1();
-			 Thread^ oThread1;
-			 Thread^ oThread2;
-			 Thread^ oThread3;
-			 Thread^ oThread4;
-			 Kolor^ k1=gcnew Kolor();
-			 Kolor^ k2 = gcnew Kolor();
-			 Kolor^ k3 = gcnew Kolor();
-			 Compfl^ cmpfl=gcnew Compfl();
-			 cliext::vector<Compfl^> compositionVector;
-			 
-
-			 /////////////////////////////////
+		System::String^ direct;
+		Thread^ oThread1;
+		Thread^ oThread2;
+		Thread^ oThread3;
+		Thread^ oThread4;
+		Kolor^ k1 = gcnew Kolor();
+		Kolor^ k2 = gcnew Kolor();
+		Kolor^ k3 = gcnew Kolor();
+		Compfl^ cmpfl = gcnew Compfl();
+		cliext::vector<Compfl^> compositionVector;
 	private: System::Windows::Forms::NumericUpDown^  uprange;
 
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  label2;
-
-
-
-
 
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::RadioButton^  rB2;
@@ -98,9 +90,6 @@ namespace lambient {
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::Label^  label8;
-
-
-
 	private: System::Windows::Forms::GroupBox^  groupBox5;
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
 	private: System::Windows::Forms::TextBox^  textBox2;
@@ -120,6 +109,9 @@ namespace lambient {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			char* cdirect = getenv("USERPROFILE");
+			std::string sdirect = cdirect;
+			direct = gcnew String(sdirect.c_str());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Dynamic::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->version = (gcnew System::Windows::Forms::Label());
@@ -178,7 +170,7 @@ namespace lambient {
 			// 
 			// button1
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif",9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button1->Location = System::Drawing::Point(496, 7);
 			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
@@ -199,11 +191,11 @@ namespace lambient {
 			this->version->Name = L"version";
 			this->version->Size = System::Drawing::Size(38, 13);
 			this->version->TabIndex = 17;
-			this->version->Text = L"V 0.97";
+			this->version->Text = L"V 1.00";
 			// 
 			// button2
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button2->Location = System::Drawing::Point(573, 7);
 			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
@@ -218,10 +210,10 @@ namespace lambient {
 			// 
 			this->button4->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button4->Location = System::Drawing::Point(9, 387);
+			this->button4->Location = System::Drawing::Point(9, 383);
 			this->button4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(70, 24);
+			this->button4->Size = System::Drawing::Size(68, 28);
 			this->button4->TabIndex = 20;
 			this->button4->Text = L"Return";
 			this->button4->UseVisualStyleBackColor = true;
@@ -374,7 +366,7 @@ namespace lambient {
 			// stopbutton
 			// 
 			this->stopbutton->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
+			static_cast<System::Byte>(238)));
 			this->stopbutton->Location = System::Drawing::Point(482, 383);
 			this->stopbutton->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->stopbutton->Name = L"stopbutton";
@@ -752,18 +744,17 @@ namespace lambient {
 #pragma endregion
 	private: System::Void groupBox2_Enter(System::Object^  sender, System::EventArgs^  e) {
 	}
-			 //Lokalizacja bêdzie zmienna
+
 	private: System::Void rB2_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
-		//Problem
 		this->modebox->Visible = false;
 		this->modeBox2->Visible = true;
-		
+
 	}
 	private: System::Void rB1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
-		//Problem
+		
 		this->modebox->Visible = true;
 		this->modeBox2->Visible = false;
-	
+
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (set1->serialPort1->IsOpen)
@@ -771,7 +762,7 @@ namespace lambient {
 			this->DialogResult = System::Windows::Forms::DialogResult::OK;
 			set1->serialPort1->Close();
 		}
-		//MyForm::FormWindowState::Minimized;
+		
 		this->Hide();
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -781,7 +772,7 @@ namespace lambient {
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		set1->Show();
 	}
-	 //W³¹czenie trybu dynamicznego
+			 //W³¹czenie trybu dynamicznego
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e);
 
 	private: System::Void numericUpDown2_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -789,45 +780,38 @@ namespace lambient {
 	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void stopbutton_Click(System::Object^  sender, System::EventArgs^  e) {
-		//running = false;
+		
 		this->groupBox3->Enabled = true;
 		this->groupBox4->Enabled = true;
 		this->button1->Enabled = true;
 		this->button2->Enabled = true;
 		this->startbutton->Enabled = true;
 		if (running == true)
-		{ 
+		{
 
-		int mode;
-		if (rB1->Checked)
-		{
-			mode = 0;
+			int mode;
+			if (rB1->Checked)
+			{
+				mode = 0;
 
-		}
-		else
-		{
-			mode = 1;
-		}
-		groupBox1->Enabled = true;
-		groupBox2->Enabled = true;
-		button1->Enabled = true;
-		button2->Enabled = true;
-		button4->Enabled = true;
-		
-		this->oThread1->Abort();
-		this->set1->usend(0, 0, 0);
-		this->set1->usend(0, 0, 0);
-		this->set1->usend(0, 0, 0);
-		//this->oThread2->Abort();
-		//this->oThread3->Abort();
-		/*
-		if (mode == 1)
-		{
+			}
+			else
+			{
+				mode = 1;
+			}
+			groupBox1->Enabled = true;
+			groupBox2->Enabled = true;
+			button1->Enabled = true;
+			button2->Enabled = true;
+			button4->Enabled = true;
+
 			this->oThread1->Abort();
-		}
-		*/
-		running = false;
-		
+			this->set1->usend(0, 0, 0);
+			this->set1->usend(0, 0, 0);
+			this->set1->usend(0, 0, 0);
+			
+			running = false;
+
 		}
 	}
 
@@ -835,76 +819,71 @@ namespace lambient {
 	}
 	private: System::Void modeBox2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-private: System::Void Dynamic_Load(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void radioButton1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
-	if (this->dbutton->Checked)
-	{
-		this->cbutton->Checked = false;
-		this->groupBox3->Enabled = true;
-		this->groupBox4->Enabled = false;
+	private: System::Void Dynamic_Load(System::Object^  sender, System::EventArgs^  e) {
 	}
-	if (!this->dbutton->Checked)
-	{
-		this->cbutton->Checked = true;
-		this->groupBox4->Enabled = true;
-		this->groupBox3->Enabled = false;
+	private: System::Void radioButton1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+		if (this->dbutton->Checked)
+		{
+			this->cbutton->Checked = false;
+			this->groupBox3->Enabled = true;
+			this->groupBox4->Enabled = false;
+		}
+		if (!this->dbutton->Checked)
+		{
+			this->cbutton->Checked = true;
+			this->groupBox4->Enabled = true;
+			this->groupBox3->Enabled = false;
+		}
 	}
-}
-private: System::Void label6_Click(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void numericUpDown1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void rgbbox_Click(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void numberboxr_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void label6_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void numericUpDown1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void rgbbox_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void numberboxr_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	compositionVector.push_back(gcnew Compfl(System::Convert::ToString(numberboxr->Value), System::Convert::ToString(numberboxg->Value), System::Convert::ToString(numberboxb->Value), System::Convert::ToString(timebox->Value)));
+		compositionVector.push_back(gcnew Compfl(System::Convert::ToString(numberboxr->Value), System::Convert::ToString(numberboxg->Value), System::Convert::ToString(numberboxb->Value), System::Convert::ToString(timebox->Value)));
 
-}
-private: System::Void cbutton_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
-	if (this->cbutton->Checked)
-	{
-		this->dbutton->Checked = false;
-		this->groupBox4->Enabled = true;
 	}
-	if (!this->cbutton->Checked)
-	{
-		this->dbutton->Checked = true;
-		this->groupBox3->Enabled = true;
-	}
-}
-private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
-	//WCZYTYWANIE DANYCH DO WEKTORA KOMPOZYCJI
+	private: System::Void cbutton_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 	
-	
-	//temp= openFileDialog1->FileName;
-	//System::IO::File::OpenRead(temp);
-	//System::IO::File::ReadAllLines(temp);
-	//for(int i=0;i< System::IO::File::ReadAllLines(te)
-	
-
-}
-private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-
-}
-private: System::Void numberboxg_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void button5_Click_1(System::Object^  sender, System::EventArgs^  e) {
-	if (compositionVector.size() != 0)
-	{
-		compositionVector.pop_back();
+		if (this->cbutton->Checked)
+		{
+			this->dbutton->Checked = false;
+			this->groupBox4->Enabled = true;
+		}
+		if (!this->cbutton->Checked)
+		{
+			this->dbutton->Checked = true;
+			this->groupBox3->Enabled = true;
+		}
 	}
-	else
-	{
-		MessageBox::Show("No colors stored","Oops!");
+	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
+
 	}
-}
+	private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+	}
+	private: System::Void numberboxg_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void button5_Click_1(System::Object^  sender, System::EventArgs^  e) {
+		if (compositionVector.size() != 0)
+		{
+			compositionVector.pop_back();
+		}
+		else
+		{
+			MessageBox::Show("No colors stored", "Oops!");
+		}
+	}
 	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-		//c1.at(1) = L'x';
-
+		if (!System::IO::Directory::Exists(direct + "\\Documents\\Comp"))
+		{
+			System::IO::Directory::CreateDirectory(direct + "\\Documents\\Comp");
+		}
 		String^ cmpname = textBox1->Text;
 		if (cmpname->Length == 0)
 		{
@@ -912,17 +891,15 @@ private: System::Void button5_Click_1(System::Object^  sender, System::EventArgs
 		}
 		else
 		{
-			//cmpname = "C:\\Users\\Krzysiek\\source\\repos\\lambient\\Debug\\Comp"+cmpname + '.txt';
-			cmpname = "Comp\\" + cmpname + ".txt";
-			//System::IO::File::Create(cmpname);
+	
+			cmpname = direct+"\\Documents\\Comp\\" + cmpname + ".txt";
+			
 			Compfl temp;
 			if (!System::IO::File::Exists(cmpname))
 			{
-				// Create a file to write to
 				System::IO::StreamWriter^ sw = System::IO::File::CreateText(cmpname);
 				try
 				{
-					//	System::IO::StreamWriter^ sw = System::IO::File::AppendText(cmpname);
 					for (int i = 0; i < compositionVector.size(); i++)
 					{
 						temp.b = compositionVector.at(i)->b;
@@ -930,12 +907,6 @@ private: System::Void button5_Click_1(System::Object^  sender, System::EventArgs
 						temp.r = compositionVector.at(i)->r;
 						temp.g = compositionVector.at(i)->g;
 
-						/*
-						System::IO::File::AppendAllText(cmpname, temp.r);
-						System::IO::File::AppendAllText(cmpname, temp.g);
-						System::IO::File::AppendAllText(cmpname, temp.b);
-						System::IO::File::AppendAllText(cmpname, temp.t);*/
-						
 						sw->WriteLine(temp.r);
 						sw->WriteLine(temp.g);
 						sw->WriteLine(temp.b);
@@ -962,16 +933,10 @@ private: System::Void button5_Click_1(System::Object^  sender, System::EventArgs
 						temp.r = compositionVector.at(i)->r;
 						temp.g = compositionVector.at(i)->g;
 
-						/*
-						System::IO::File::AppendAllText(cmpname, temp.r);
-						System::IO::File::AppendAllText(cmpname, temp.g);
-						System::IO::File::AppendAllText(cmpname, temp.b);
-						System::IO::File::AppendAllText(cmpname, temp.t);*/
 						sw->WriteLine(temp.r);
 						sw->WriteLine(temp.g);
 						sw->WriteLine(temp.b);
 						sw->WriteLine(temp.t);
-
 					}
 				}
 				finally
@@ -983,361 +948,340 @@ private: System::Void button5_Click_1(System::Object^  sender, System::EventArgs
 
 		}
 	}
-private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
-	openFileDialog1->Filter = "Text File|*.txt|Word Doc|*.doc";
-	openFileDialog1->InitialDirectory = "%HOMEPATH%\\Desktop\\AmbientRGB\\Comp";
-	openFileDialog1->Title = "Open Text Files";
-	openFileDialog1->ShowDialog();
-	System::String^ showname = "";
-	System::String^ filename = openFileDialog1->FileName;
-	if(filename!="openFileDialog1")
-	{ 
-	for (int i = filename->Length - 5; i > 0; i--)//Usuwanie .txt z nazwy pliku
-	{
-		if (filename[i].Equals(92))
+	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
+		openFileDialog1->Filter = "Text File|*.txt|Word Doc|*.doc";
+		if (!System::IO::Directory::Exists(direct + "\\Documents\\Comp"))
 		{
-			break;
+			System::IO::Directory::CreateDirectory(direct + "\\Documents\\Comp");
 		}
-		showname = filename[i] + showname;
+		openFileDialog1->InitialDirectory = direct + "\\Documents\\Comp\\" ;
+		openFileDialog1->Title = "Open Text Files";
+		openFileDialog1->ShowDialog();
+		System::String^ showname = "";
+		System::String^ filename = openFileDialog1->FileName;
+		if (filename != "openFileDialog1")
+		{
+			for (int i = filename->Length - 5; i > 0; i--)
+			{
+				if (filename[i].Equals(92))
+				{
+					break;
+				}
+				showname = filename[i] + showname;
+			}
+			this->textBox2->Text = showname;
+		}
 	}
-	this->textBox2->Text = showname;
-	}
-}
-};
+	};
 	//W¹tek do przechwytywania danych
-		public ref class DynamicThread : public Dynamic
-		{
-			int mode, side, up;//1 to 3 boki,0 to 2 boki
-			Settings^ set1;
-			Kolor c1, c2, c3;
-			Kolor^ clr;
-			Kolor^ clr2;
-			Kolor^ clr3;
-		public:
-			Thread^ oThread2;
-		public: DynamicThread()
-		{
-		}
-		public: DynamicThread(Settings^ set1, Kolor^ &cl, Kolor^ &cl2, Kolor^ &cl3)
-		{
-		
+	public ref class DynamicThread : public Dynamic
+	{
+		int mode, side, up;
+		Settings^ set1;
+		Kolor c1, c2, c3;
+		Kolor^ clr;
+		Kolor^ clr2;
+		Kolor^ clr3;
+	public:
+		Thread^ oThread2;
+	public: DynamicThread()
+	{
+	}
+	public: DynamicThread(Settings^ set1, Kolor^ &cl, Kolor^ &cl2, Kolor^ &cl3)
+	{
+		this->clr = cl2;
+		this->clr3 = cl3;
+		this->set1 = set1;
+		this->clr = cl;
+	}
+	public: DynamicThread(int mode, int side, int up, Settings^ set1, Kolor ^&cl)
+	{
 
-		
-			this->clr = cl2;
-			this->clr3 = cl3;
-			this->set1 = set1;
-			this->clr = cl;
+		this->mode = mode;
+		this->side = side;
+		this->up = up;
+		this->set1 = set1;
+		this->clr = cl;
 
-		}
-		public: DynamicThread(int mode, int side, int up, Settings^ set1, Kolor ^&cl)
+	}
+	public: DynamicThread(int mode, int side, int up, Settings^ set1)
+	{
+		this->mode = mode;
+		this->side = side;
+		this->up = up;
+		this->set1 = set1;
+	}
+	public:
+		void ThreadProc()
 		{
-
-		
-			this->mode = mode;
-			this->side = side;
-			this->up = up;
-			this->set1 = set1;
-			this->clr = cl;
-		
-
-		}
-		public: DynamicThread(int mode, int side, int up, Settings^ set1)
-		{
-			this->mode = mode;
-			this->side = side;
-			this->up = up;
-			this->set1 = set1;
-		
-		}
-		public:
-			void ThreadProc()
+			COLORREF col1, col2;
+			HWND hwnd;
+			HDC hdc;
+			hdc = GetDC(hwnd);
+			FindWindowA(NULL, "tr");
+			while (true)
 			{
-				COLORREF col1,col2;
-			
-				HWND hwnd;
-				HDC hdc;
-				hdc = GetDC(hwnd);
-				FindWindowA(NULL, "tr");
-				while (true)
+				c1.r = c1.b = c1.g = c2.b = c2.r = c2.g = c3.r = c3.g = c3.b = 0;
+				int s = 0;
+				for (int y = 0; y < 1080; y += (1080 / 2))
 				{
-					c1.r = c1.b = c1.g = c2.b = c2.r = c2.g = c3.r = c3.g = c3.b = 0;
-					int s = 0;
-					//BOKI
-						for (int y=0; y < 1080; y +=(1080/2))
-						{
-							for (int x = 0; x < side; x += (side / 2))
-							{
-								col1 = GetPixel(hdc, x, y);
-								c1.r = c1.r + GetRValue(col1);
-								c1.g = c1.g + GetGValue(col1);
-								c1.b = c1.b + GetBValue(col1);
-							
-								col2 = GetPixel(hdc, 1919 - x, y);
-								c2.r = c2.r + GetRValue(col2);
-								c2.g = c2.g + GetGValue(col2);
-								c2.b = c2.b + GetBValue(col2);
-						
-								s++;
-							}
-						
-						}
-						c1.r = c1.r / s;
-						c1.g = c1.g / s;
-						c1.b = c1.b / s;
-						c2.r = c2.r / s;
-						c2.g = c2.g / s;
-						c2.b = c2.b / s;
-				
-					
-						s = 0;
-						if (mode == 1) //GÓRA i boki
-						{
-							//MessageBox::Show("running in full mode");
-						for(int x = 0; x < 1920; x +=(1920/2))
-						{
-							for (int y = 0; y < up; y += (up / 2))
-							{
-								col1 = GetPixel(hdc, x, y);
-								c3.r = c3.r + GetRValue(col1);
-								c3.g = c3.g + GetGValue(col1);
-								c3.b = c3.b + GetBValue(col1);
-								s++;
-							}
-						}
+					for (int x = 0; x < side; x += (side / 2))
+					{
+						col1 = GetPixel(hdc, x, y);
+						c1.r = c1.r + GetRValue(col1);
+						c1.g = c1.g + GetGValue(col1);
+						c1.b = c1.b + GetBValue(col1);
 
-						c3.r = c3.r / s;
-						c3.g = c3.g / s;
-						c3.b = c3.b / s;
-					
+						col2 = GetPixel(hdc, 1919 - x, y);
+						c2.r = c2.r + GetRValue(col2);
+						c2.g = c2.g + GetGValue(col2);
+						c2.b = c2.b + GetBValue(col2);
 
-						}
-					
-					
-						this->set1->usend(c1.r, c1.g, c1.b);
-						this->set1->usend(c2.r, c2.g, c2.b);
-						this->set1->usend(c3.r, c3.g, c3.b);
-				
-					
+						s++;
+					}
 
 				}
-		
-			}
-			void ThreadLeft()
-			{
-				COLORREF col1;
-				int s = 0;
-				HWND hwnd;
-				HDC hdc;
-				hdc = GetDC(hwnd);
-				FindWindowA(NULL, "tr");
-				while (true)
+				c1.r = c1.r / s;
+				c1.g = c1.g / s;
+				c1.b = c1.b / s;
+				c2.r = c2.r / s;
+				c2.g = c2.g / s;
+				c2.b = c2.b / s;
+
+
+				s = 0;
+				if (mode == 1) //GÓRA i boki
 				{
-					for (int y = 0; y < 1080; y += (1080 / 5))
+					
+					for (int x = 0; x < 1920; x += (1920 / 2))
 					{
-						for (int x = 0; x < side; x += (side / 5))
+						for (int y = 0; y < up; y += (up / 2))
 						{
 							col1 = GetPixel(hdc, x, y);
-							c1.r = c1.r + GetRValue(col1);
-							c1.g = c1.g + GetGValue(col1);
-							c1.b = c1.b + GetBValue(col1);
-							s++;
-						}
-
-					}
-					c1.r = c1.r / s;
-					c1.g = c1.g / s;
-					c1.b = c1.b / s;
-					s = 0;
-
-					this->clr->r = c1.r;
-					this->clr->b = c1.b;
-					this->clr->g = c1.b;
-					c1.r = c1.b = c1.g = 0;
-				}
-			}
-			void ThreadRight()
-			{
-				COLORREF col1;
-				int s = 0;
-				HWND hwnd;
-				HDC hdc;
-				hdc = GetDC(hwnd);
-				FindWindowA(NULL, "tr");
-				while (true)
-				{
-					for (int y = 0; y < 1080; y += (1080 / 5))
-					{
-						for (int x = 0; x < side; x += (side / 5))
-						{
-						
-
-							col1 = GetPixel(hdc, 1920 - x, y);
-							c2.r = c2.r + GetRValue(col1);
-							c2.g = c2.g + GetGValue(col1);
-							c2.b = c2.b + GetBValue(col1);
-							s++;
-						}
-
-					}
-					c2.r = c2.r / s;
-					c2.g = c2.g / s;
-					c2.b = c2.b / s;
-					s = 0;
-
-					this->clr->r = c2.r;
-					this->clr->b = c2.b;
-					this->clr->g = c2.b;
-					c2.r = c2.b = c2.g = 0;
-				}
-			}
-			void ThreadTop()
-			{
-				COLORREF col1;
-				int s = 0;
-				HWND hwnd;
-				HDC hdc;
-				hdc = GetDC(hwnd);
-				FindWindowA(NULL, "tr");
-				while (true)
-				{
-					for (int x = 0; x < 1920; x += (1920 / 5))
-					{
-						for (int y = 0; y < up; y += (up / 5))
-						{
-							col1 = GetPixel(hdc, x, y);
-							c1.r = c1.r + GetRValue(col1);
-							c1.g = c1.g + GetGValue(col1);
-							c1.b = c1.b + GetBValue(col1);
+							c3.r = c3.r + GetRValue(col1);
+							c3.g = c3.g + GetGValue(col1);
+							c3.b = c3.b + GetBValue(col1);
 							s++;
 						}
 					}
-					c1.r = c1.r / s;
-					c1.g = c1.g / s;
-					c1.b = c1.b / s;
-					s = 0;
 
-					this->clr->r = c1.r;
-					this->clr->b = c1.b;
-					this->clr->g = c1.b;
-					c1.r = c1.b = c1.g = 0;
+					c3.r = c3.r / s;
+					c3.g = c3.g / s;
+					c3.b = c3.b / s;
+
 				}
+
+				this->set1->usend(c1.r, c1.g, c1.b);
+				this->set1->usend(c2.r, c2.g, c2.b);
+				this->set1->usend(c3.r, c3.g, c3.b);
+
 			}
-			void ThreadSend()
-			{
-				Sleep(1500);
 
-					this->c1.r = this->clr->r;
-					this->c1.g = this->clr->g;
-					this->c1.b = this->clr->b;
-					int i = this->clr->r;
-					int j = this->clr->g;
-					int k = this->clr->b;
-					MessageBox::Show("Sending R: " + i + "G: " + j + "B: " + k);
-					this->c2.r = this->clr2->r;
-					this->c2.g = this->clr2->g;
-					this->c2.b = this->clr2->b;
-
-					this->c3.r = this->clr3->r;
-					this->c3.g = this->clr3->g;
-					this->c3.b = this->clr3->b;
-
-					this->set1->usend(c1.g, c1.g, c1.b);
-					this->set1->usend(c2.r, c2.g, c2.b);
-					this->set1->usend(c3.r, c3.g, c3.b);
-			
-			
-			}
-		};
-		public ref class ComboThread : public Dynamic
+		}
+		void ThreadLeft()
 		{
-			//W¹tek kompozycji
-			System::String^ filename;
-			Settings^ set1;
-			int run = 0;
-			public: ComboThread()
+			COLORREF col1;
+			int s = 0;
+			HWND hwnd;
+			HDC hdc;
+			hdc = GetDC(hwnd);
+			FindWindowA(NULL, "tr");
+			while (true)
 			{
-				this->filename = "";
-				this->run = 0;
+				for (int y = 0; y < 1080; y += (1080 / 5))
+				{
+					for (int x = 0; x < side; x += (side / 5))
+					{
+						col1 = GetPixel(hdc, x, y);
+						c1.r = c1.r + GetRValue(col1);
+						c1.g = c1.g + GetGValue(col1);
+						c1.b = c1.b + GetBValue(col1);
+						s++;
+					}
+
+				}
+				c1.r = c1.r / s;
+				c1.g = c1.g / s;
+				c1.b = c1.b / s;
+				s = 0;
+
+				this->clr->r = c1.r;
+				this->clr->b = c1.b;
+				this->clr->g = c1.b;
+				c1.r = c1.b = c1.g = 0;
 			}
+		}
+		void ThreadRight()
+		{
+			COLORREF col1;
+			int s = 0;
+			HWND hwnd;
+			HDC hdc;
+			hdc = GetDC(hwnd);
+			FindWindowA(NULL, "tr");
+			while (true)
+			{
+				for (int y = 0; y < 1080; y += (1080 / 5))
+				{
+					for (int x = 0; x < side; x += (side / 5))
+					{
+
+						col1 = GetPixel(hdc, 1920 - x, y);
+						c2.r = c2.r + GetRValue(col1);
+						c2.g = c2.g + GetGValue(col1);
+						c2.b = c2.b + GetBValue(col1);
+						s++;
+					}
+
+				}
+				c2.r = c2.r / s;
+				c2.g = c2.g / s;
+				c2.b = c2.b / s;
+				s = 0;
+
+				this->clr->r = c2.r;
+				this->clr->b = c2.b;
+				this->clr->g = c2.b;
+				c2.r = c2.b = c2.g = 0;
+			}
+		}
+		void ThreadTop()
+		{
+			COLORREF col1;
+			int s = 0;
+			HWND hwnd;
+			HDC hdc;
+			hdc = GetDC(hwnd);
+			FindWindowA(NULL, "tr");
+			while (true)
+			{
+				for (int x = 0; x < 1920; x += (1920 / 5))
+				{
+					for (int y = 0; y < up; y += (up / 5))
+					{
+						col1 = GetPixel(hdc, x, y);
+						c1.r = c1.r + GetRValue(col1);
+						c1.g = c1.g + GetGValue(col1);
+						c1.b = c1.b + GetBValue(col1);
+						s++;
+					}
+				}
+				c1.r = c1.r / s;
+				c1.g = c1.g / s;
+				c1.b = c1.b / s;
+				s = 0;
+
+				this->clr->r = c1.r;
+				this->clr->b = c1.b;
+				this->clr->g = c1.b;
+				c1.r = c1.b = c1.g = 0;
+			}
+		}
+		void ThreadSend()
+		{
+			Sleep(1500);
+
+			this->c1.r = this->clr->r;
+			this->c1.g = this->clr->g;
+			this->c1.b = this->clr->b;
+			int i = this->clr->r;
+			int j = this->clr->g;
+			int k = this->clr->b;
+			MessageBox::Show("Sending R: " + i + "G: " + j + "B: " + k);
+			this->c2.r = this->clr2->r;
+			this->c2.g = this->clr2->g;
+			this->c2.b = this->clr2->b;
+
+			this->c3.r = this->clr3->r;
+			this->c3.g = this->clr3->g;
+			this->c3.b = this->clr3->b;
+
+			this->set1->usend(c1.g, c1.g, c1.b);
+			this->set1->usend(c2.r, c2.g, c2.b);
+			this->set1->usend(c3.r, c3.g, c3.b);
+
+
+		}
+	};
+	public ref class ComboThread : public Dynamic
+	{
+		//W¹tek kompozycji
+		System::String^ filename;
+		Settings^ set1;
+		int run = 0;
+	public: ComboThread()
+	{
+		this->filename = "";
+		this->run = 0;
+	}
 			ComboThread(System::String^ name, Settings^ set1)
 			{
 				this->filename = name;
 				this->run = 0;
 				this->set1 = set1;
 			}
-			public: void readProc()
+	public: void readProc()
+	{
+		//Proces czytania
+		
+		if (filename->Length != 0)
+		{
+			System::String^ r;
+			System::String^ g;
+			System::String^ b;
+			System::String^ t;
+			int count = 0;
+			while (true)
 			{
-				//Proces czytania
-				if (run == 0)
+				System::IO::StreamReader^ sr = System::IO::File::OpenText(filename);
+				try
 				{
-					if (filename->Length != 0)
+					String^ s = "";
+					int aa, ab, ac;
+					while (s = sr->ReadLine())
 					{
-						filename = "Comp\\" + filename + ".txt";
-						run++;
-					}
-					else
-					{
-					//
-					}
-					
-				}
-				if (filename->Length != 0)
-				{
-					System::String^ r;
-					System::String^ g;
-					System::String^ b;
-					System::String^ t;
-					int count = 0;
-					while (true)
-					{
-						System::IO::StreamReader^ sr = System::IO::File::OpenText(filename);
-						try
+						switch (count)
 						{
-							String^ s = "";
-							int aa, ab, ac;
-							while (s = sr->ReadLine())
-							{
-								switch (count)
-								{
 
-								case 0:
-									r = s;
-									aa = Convert::ToInt16(r);
-									count++;
-									break;
-								case 1:
-									g = s;
-									ab = Convert::ToInt16(g);
-									count++;
-									break;
-								case 2:
-									b = s;
-									ac = Convert::ToInt16(b);
-									count++;
-									break;
-								case 3:
-									t = s;
-									count = 0;
-									int tm = Convert::ToInt16(t);
-									lambient::Dynamic::rgbbox->BackColor = Color::FromArgb(aa, ab, ac);
-									this->set1->usend(aa, ab, ac);
-									this->set1->usend(aa, ab, ac);
-									this->set1->usend(aa, ab, ac);
-									Sleep(tm);
-									break;
-								}
-							}
-						}
-						finally
-						{
-						   if (sr)
-							  delete (IDisposable^)sr;
+						case 0:
+							r = s;
+							aa = Convert::ToInt16(r);
+							count++;
+							break;
+						case 1:
+							g = s;
+							ab = Convert::ToInt16(g);
+							count++;
+							break;
+						case 2:
+							b = s;
+							ac = Convert::ToInt16(b);
+							count++;
+							break;
+						case 3:
+							t = s;
+							count = 0;
+							int tm = Convert::ToInt16(t);
+							lambient::Dynamic::rgbbox->BackColor = Color::FromArgb(aa, ab, ac);
+
+							this->set1->usend(aa, ab, ac);
+							this->set1->usend(aa, ab, ac);
+							this->set1->usend(aa, ab, ac);
+							Sleep(tm);
+							break;
 						}
 					}
 				}
-				
+				finally
+				{
+				   if (sr)
+					  delete (IDisposable^)sr;
+				}
 			}
+		}
+
+	}
 	};
 }
